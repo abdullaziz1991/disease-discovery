@@ -30,12 +30,7 @@ class _HomeState extends State<Home> {
         'Title': "Select Symptoms".tr(),
       },
     ];
-    // String a = "abc";
-    // String b = "gggg";
-    // List<String> list = [a, b];
-    // int c = 10;
-    // int d = 20;
-    // List<int> list2 = [c, d];
+   
     return Scaffold(
         appBar:
             AppAppBar(title: screens[_selectedScreenIndex]['Title'].toString()),

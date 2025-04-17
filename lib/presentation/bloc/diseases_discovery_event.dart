@@ -7,7 +7,10 @@ abstract class DiseasesDiscoveryEvent extends Equatable {
 }
 
 // حدث لبدء أو إيقاف الاستماع
-class ToggleListeningEvent extends DiseasesDiscoveryEvent {}
+class ToggleListeningEvent extends DiseasesDiscoveryEvent {
+  final BuildContext context;
+  ToggleListeningEvent({required this.context});
+}
 
 // حدث لتحديث النص المستمع إليه
 class UpdateRecognizedTextEvent extends DiseasesDiscoveryEvent {
@@ -22,11 +25,11 @@ class UpdateRecognizedTextEvent extends DiseasesDiscoveryEvent {
 class ClearRecognizedTextEvent extends DiseasesDiscoveryEvent {}
 
 class SendForDiagnosisEvent extends DiseasesDiscoveryEvent {
-  final DiagnosticMethod method;
+//  final DiagnosticMethod method;
   final BuildContext context;
   //final List<String>? selectedSymptoms; , this.selectedSymptoms
   SendForDiagnosisEvent({
-    required this.method,
+    //   required this.method,
     required this.context,
   });
 }
@@ -35,9 +38,6 @@ class SendForDiagnosisEvent extends DiseasesDiscoveryEvent {
 class SearchSymptoms extends DiseasesDiscoveryEvent {
   final String query;
   SearchSymptoms(this.query);
-
-  @override
-  List<Object> get props => [query];
 }
 
 // حدث لاختيار أو إلغاء اختيار عرض معين
@@ -50,3 +50,13 @@ class ToggleSymptomSelection extends DiseasesDiscoveryEvent {
 }
 
 class ResetValuesEvent extends DiseasesDiscoveryEvent {}
+
+class ChangeLanguageEvent extends DiseasesDiscoveryEvent {
+  final BuildContext context;
+  ChangeLanguageEvent({required this.context});
+  // final Locale locale;
+//  ChangeLanguageEvent(this.locale);
+}
+
+
+

@@ -4,6 +4,92 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'presentation/functions/permission.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
+// void main() => runApp(MyApp());
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: TtsScreen(),
+//     );
+//   }
+// }
+
+// class TtsScreen extends StatefulWidget {
+//   @override
+//   _TtsScreenState createState() => _TtsScreenState();
+// }
+
+// class _TtsScreenState extends State<TtsScreen> {
+//   final FlutterTts flutterTts = FlutterTts();
+//   final TextEditingController _controller = TextEditingController();
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _initTts();
+//   }
+
+//   Future<void> _initTts() async {
+//     await flutterTts.setLanguage("en-US");
+
+//     // await flutterTts.setLanguage("ar-SA"); // تهيئة اللغة
+//   }
+
+//   Future<void> _speak() async {
+//     await flutterTts.speak(_controller.text);
+//   }
+
+//   Future<void> _stop() async {
+//     await flutterTts.stop();
+//   }
+
+//   @override
+//   void dispose() {
+//     flutterTts.stop();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('محول النص إلى كلام')),
+//       body: Padding(
+//         padding: EdgeInsets.all(16.0),
+//         child: Column(
+//           children: [
+//             TextField(
+//               controller: _controller,
+//               decoration: InputDecoration(
+//                 labelText: 'أدخل النص هنا',
+//               ),
+//             ),
+//             SizedBox(height: 20),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//               children: [
+//                 ElevatedButton(
+//                   onPressed: _speak,
+//                   child: Text('تشغيل'),
+//                 ),
+//                 ElevatedButton(
+//                   onPressed: _stop,
+//                   child: Text('إيقاف'),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+// FVM (Flutter Version Manager) – لإدارة إصدارات Flutter بسهولة.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // هي دالة تُستخدم في تطبيقات Flutter لضمان تهيئة Flutter engine

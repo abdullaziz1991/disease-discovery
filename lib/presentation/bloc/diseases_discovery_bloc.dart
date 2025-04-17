@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 import '../../app/app_snack_bar.dart';
 import '../../app/constant.dart';
 import '../functions/change_list.dart';
+import '../functions/convert_text_to_symptoms.dart';
 import '../functions/extract_symptoms.dart';
 import '../functions/remove_duplicate_words.dart';
 
@@ -31,17 +32,20 @@ class DiseasesDiscoveryBloc
     //1
 
     on<ToggleListeningEvent>((event, emit) async {
+      String languageCode =
+          EasyLocalization.of(event.context)!.locale.languageCode == 'en'
+              ? 'en'
+              : 'ar';
       if (!state.isListening) {
         bool available = await _speech.initialize();
         if (available) {
           emit(state.copyWith(isListening: true));
           _speech.listen(
-              
-
               onResult: (result) {
                 add(UpdateRecognizedTextEvent(result.recognizedWords));
               },
-              localeId: 'ar_EG');
+              //localeId: 'ar_EG');
+              localeId: languageCode);
         }
       } else {
         emit(state.copyWith(isListening: false));
@@ -50,10 +54,23 @@ class DiseasesDiscoveryBloc
     });
     // 2
     on<UpdateRecognizedTextEvent>((event, emit) async {
-      String updatedText =
-          removeDuplicateWords("${state.recognizedText} ${event.newText}");
-      print(updatedText);
+      // String updatedText =
+      //     removeDuplicateWords("${state.recognizedText} ${event.newText}");
+      // print(updatedText);
+      //   emit(state.copyWith(recognizedText: updatedText));
+      print(event.newText);
+      print("event.newText -----------------------------------");
+      String newText = removeDuplicateWords(event.newText);
+      String updatedText = "${state.recognizedText} $newText";
       emit(state.copyWith(recognizedText: updatedText));
+      String symptom = SymptomMapper.convertTextToSymptom(event.newText);
+      if (symptom.isNotEmpty && !state.selectedSymptoms.contains(symptom)) {
+        List<String> selectedSymptoms = List.from(state.selectedSymptoms)
+          ..add(symptom);
+        emit(state.copyWith(selectedSymptoms: selectedSymptoms));
+        add(SearchSymptoms(''));
+        print("Added symptom: $symptom");
+      }
     });
     //3
     on<ClearRecognizedTextEvent>((event, emit) async {
@@ -64,13 +81,25 @@ class DiseasesDiscoveryBloc
       final url = Uri.parse('http://192.168.1.130:5000/predict');
       //final url = Uri.parse('http://192.168.215.129:5000/predict');
 
-      late Map<String, String> symptomsData;
-      if (event.method == DiagnosticMethod.fromMic) {
-        symptomsData = extractSymptoms(state.recognizedText);
-      } else {
-        ChangeList changeList = ChangeList(state.selectedSymptoms);
-        symptomsData = changeList.getUpdatedList();
-      }
+      //  if (event.method == DiagnosticMethod.fromMic) {
+      //    symptomsData = extractSymptoms(state.recognizedText);
+      // } else {
+      // state.selectedSymptoms = ['skin_rash', 'chills'];
+
+      ChangeList changeList = ChangeList(state.selectedSymptoms);
+
+      Map<String, String> symptomsData = changeList.getUpdatedList();
+
+      print(state.selectedSymptoms);
+      print("state.selectedSymptoms -------------------");
+      print(symptomsData);
+      print("symptomsData -------------------");
+
+      // symptomsData={
+      //   'skin_rash':"1",
+      //   'chills': "1"
+      // }
+      //   }
 
       try {
         final response = await http
@@ -78,11 +107,20 @@ class DiseasesDiscoveryBloc
                 headers: {'Content-Type': 'application/json'},
                 body: jsonEncode(symptomsData))
             .timeout(const Duration(seconds: 2));
+
+        //symptomsData="{'skin_rash':"1",'chills': "1"}"
+
         // تحديد مهلة 10 ثوانٍ
         if (response.statusCode == 200) {
           Map<String, dynamic> data = json.decode(response.body);
+          print(data);
+          print("data -------------------------");
           String disease = data["disease"];
           List<String> adviceList = List<String>.from(data["advice"]);
+          print(disease);
+          print("disease -------------------");
+          print(adviceList);
+          print("adviceList -------------------");
           emit(state.copyWith(diagnosis: disease, advices: adviceList));
         } else {
           print("خطأ في الطلب: ${response.statusCode}");
@@ -100,15 +138,15 @@ class DiseasesDiscoveryBloc
     //
 
     on<SearchSymptoms>((event, emit) async {
-      print(event.query.toLowerCase());
-      print("event.query.toLowerCase( -----------------------)");
+      //event.query البحث في القائمة الاساسية للاعراض عن كل الاعراض التي تحتوي على القيمة المدخلة في حقل البحث وهو
       List<String> results = allSymptoms.where((symptom) {
         return symptom.toLowerCase().tr().contains(event.query.toLowerCase());
       }).toList();
+      //  results = ['extra', 'buring', 'received', "abc"];
       // ترتيب القائمة بحيث تكون الأعراض المختارة في الأعلى
 
-      //results= [continuous_sneezing, nodal_skin_eruptions, skin_rash, joint_pain, stomach_pain, acidity]
-      // selectedSymptoms= [nodal_skin_eruptions, stomach_pain]
+      //selectedSymptoms= ['nodal_skin', 'internal_itching','extra']
+
       results.sort((a, b) {
         bool aSelected = state.selectedSymptoms.contains(a);
         bool bSelected = state.selectedSymptoms.contains(b);
@@ -122,16 +160,14 @@ class DiseasesDiscoveryBloc
 
       emit(state.copyWith(filteredSymptoms: results));
     });
-
+//results= [ nodal_skin_eruptions,stomach_pain, continuous_sneezing, skin_rash,joint_pain , acidity]
     on<ToggleSymptomSelection>((event, emit) async {
+      // state.selectedSymptoms = ['chills'];
+
       List<String> updatedSelectedSymptoms = List.from(state.selectedSymptoms);
-      print(updatedSelectedSymptoms);
-      print("updatedSelectedSymptoms ------------------------------");
       if (updatedSelectedSymptoms.contains(event.symptom)) {
-        print("  if  -------------");
         updatedSelectedSymptoms.remove(event.symptom);
       } else {
-        print("  elseee  -------------");
         updatedSelectedSymptoms.add(event.symptom);
       }
 
@@ -139,36 +175,21 @@ class DiseasesDiscoveryBloc
       add(SearchSymptoms(''));
       emit(state.copyWith(selectedSymptoms: updatedSelectedSymptoms));
     });
+    //
     on<ResetValuesEvent>((event, emit) async {
       emit(state.copyWith(selectedSymptoms: [], diagnosis: "", advices: []));
+    });
+    //
+    on<ChangeLanguageEvent>((event, emit) {
+      Locale newLocale =
+          EasyLocalization.of(event.context)!.locale.languageCode == 'en'
+              ? const Locale('ar')
+              : const Locale('en');
+
+      event.context.setLocale(newLocale);
+      // تحديث EasyLocalization أيضًا
+      emit(state.copyWith(locale: newLocale));
     });
   }
 //
 }
-
-
- // final url = Uri.parse('http://192.168.1.130:5000/predict');
-      // //final url = Uri.parse('http://192.168.215.129:5000/predict');
-      // late Map<String, String> symptomsData;
-
-      // if (event.method == DiagnosticMethod.fromMic) {
-      //   symptomsData = extractSymptoms(state.recognizedText);
-      // } else {
-      //   ChangeList changeList = ChangeList(state.selectedSymptoms);
-      //   // استرجاع القائمة الجديدة
-      //   symptomsData = changeList.getUpdatedList();
-      // }
-      // final response = await http.post(url,
-      //     headers: {'Content-Type': 'application/json'},
-      //     body: jsonEncode(symptomsData));
-      // print(response.statusCode);
-      // print("response.statusCode ----------------------");
-      // if (response.statusCode == 200) {
-      //   Map<String, dynamic> data = json.decode(response.body);
-      //   String disease = data["disease"];
-      //   List<String> adviceList = List<String>.from(data["advice"]);
-      //   emit(state.copyWith(diagnosis: disease, advices: adviceList));
-      // } else {
-      //   emit(state.copyWith(diagnosis: "حدث خطأ اثناء التشخيص", advices: []));
-      //   //  setState(() => _diagnosis = 'حدث خطأ أثناء التشخيص.');
-      // }

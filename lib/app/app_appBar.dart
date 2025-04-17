@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../presentation/bloc/diseases_discovery_bloc.dart';
 import '../presentation/widgets/app_text_style.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,11 +24,15 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
             padding: EdgeInsets.all(10.r),
             child: Icon(Icons.language, size: 25.r, color: Colors.blueGrey)),
         onTap: () {
-          if (EasyLocalization.of(context)!.locale.languageCode == 'en') {
-            context.setLocale(const Locale('ar'));
-          } else {
-            context.setLocale(const Locale('en'));
-          }
+          // if (EasyLocalization.of(context)!.locale.languageCode == 'en') {
+          //   context.setLocale(const Locale('ar'));
+          // } else {
+          //   context.setLocale(const Locale('en'));
+          // }
+
+          context
+              .read<DiseasesDiscoveryBloc>()
+              .add(ChangeLanguageEvent(context: context));
         },
       ),
       title: Center(

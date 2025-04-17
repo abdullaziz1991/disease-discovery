@@ -242,7 +242,9 @@ advice_mapping = {
         'Avoid caffeine and alcohol',
         'Consult a doctor if symptoms persist'
     ],
-    'Varicose veins': [
+    'Varicose veins': 
+ 
+    [
         'Elevate your legs to reduce swelling',
         'Wear compression stockings',
         'Exercise regularly to improve circulation',

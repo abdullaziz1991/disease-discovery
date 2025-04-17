@@ -1,10 +1,18 @@
 {
   "________________________Home________________________": "",
-  "Look for symptoms": "ابحث عن الأعراض",
+  "Medical Diagnostic App": "تطبيق التشخيص الطبي",
   "Symptom Input": "إدخال الاعراض",
   "Select Symptoms": "إختيار الاعراض",
   "An unexpected error occurred": "حدث خطأ غير متوقع",
   "Please re-order": "يرجى اعادة الطلب بسبب عدم استجابة السيرفر",
+
+  "________________________DetectingDiseasesSelect________________________": "",
+  "Look for symptoms": "ابحث عن الأعراض",
+
+  "________________________DetectingDiseasesMicrophone________________________": "",
+  "Press and talk": "اضغط على الزر وتحدث عن أعراضك",
+  "No text has been recorded yet": "لم يتم تسجيل أي نص بعد",
+
   "________________________Symptoms of diseases________________________": "",
   "itching": "مثير للحكة",
   "skin_rash": "طفح جلدي",

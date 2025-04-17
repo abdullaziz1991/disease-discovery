@@ -1,6 +1,5 @@
-
-
 List<String> allSymptoms = [
+
   'itching',
   'skin_rash',
   'nodal_skin_eruptions',

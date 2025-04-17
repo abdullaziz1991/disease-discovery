@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'presentation/bloc/diseases_discovery_bloc.dart';
-import 'presentation/pages/home.dart';
+import 'presentation/pages/initial_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (_) => DiseasesDiscoveryBloc()),
         ],
         child: ScreenUtilInit(
-            designSize: const Size(375, 812),
+            designSize: const Size(411, 843),
             minTextAdapt: false,
             // لتحديد ما إذا كان سيتم تكييف النصوص تلقائيًا مع حجم الشاشة الأصغر
             splitScreenMode: true,
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               // لتحديد اللغة والمنطقة الحالية
               title: 'Shopping App',
               themeMode: ThemeMode.light,
-              home: Home(),
+              home: const InitialPage(),
               // الصفحة الرئيسية للتطبيق
             )));
   }

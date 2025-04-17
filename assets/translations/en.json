@@ -1,10 +1,17 @@
 {
   "________________________Home________________________": "",
-  "Look for symptoms": "Look for symptoms",
+  "Medical Diagnostic App": "Medical Diagnostic App",
   "Symptom Input": "Symptom Input",
   "Select Symptoms": "Select Symptoms",
   "An unexpected error occurred": "An unexpected error occurred",
   "Please re-order": "Please resubmit your request due to server unresponsiveness",
+  "________________________DetectingDiseasesSelect________________________": "",
+  "Look for symptoms": "Look for symptoms",
+
+  "________________________DetectingDiseasesMicrophone________________________": "",
+  "Press and talk": "Press the button and talk about your\nsymptoms",
+  "No text has been recorded yet": "No text has been recorded yet",
+
   "________________________Symptoms of diseases________________________": "",
   "itching": "itching",
   "skin_rash": "skin_rash",
