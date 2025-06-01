@@ -58,5 +58,25 @@ class ChangeLanguageEvent extends DiseasesDiscoveryEvent {
 //  ChangeLanguageEvent(this.locale);
 }
 
+class SetIsSpeakingEvent extends DiseasesDiscoveryEvent {
+  final bool isSpeaking;
+  SetIsSpeakingEvent(this.isSpeaking);
+}
 
+class SetDiagnosisSpokenEvent extends DiseasesDiscoveryEvent {
+  final bool isSpoken;
+  SetDiagnosisSpokenEvent(this.isSpoken);
+}
 
+class ToggleSpeechEvent extends DiseasesDiscoveryEvent {
+  final BuildContext context;
+  ToggleSpeechEvent({required this.context});
+}
+
+class StopSpeechEvent extends DiseasesDiscoveryEvent {}
+
+class UpdateSpeakingStatus extends DiseasesDiscoveryEvent {
+  final bool isSpeaking;
+
+  UpdateSpeakingStatus(this.isSpeaking);
+}

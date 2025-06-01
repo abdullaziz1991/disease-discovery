@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
         'Title': "Select Symptoms".tr(),
       },
       {
-        'Screen': SeletectingHerbs(),
+        'Screen': SelectingHerbsPage(),
         'Title': "Select Herbs".tr(),
       },
     ];

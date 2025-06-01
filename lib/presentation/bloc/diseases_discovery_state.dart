@@ -9,14 +9,18 @@ class DiseasesDiscoveryState extends Equatable {
   List<String> filteredSymptoms;
   List<String> selectedSymptoms;
   Locale locale;
+  final bool isSpeaking;
+  final bool isDiagnosisSpoken;
   DiseasesDiscoveryState({
+    List<String>? filteredSymptoms,
     this.isListening = false,
     this.recognizedText = "",
     this.diagnosis = "",
     this.advices = const [],
-    List<String>? filteredSymptoms,
     this.selectedSymptoms = const [],
     this.locale = const Locale('ar'),
+    this.isSpeaking = false,
+    this.isDiagnosisSpoken = false,
   }) : filteredSymptoms = filteredSymptoms ?? allSymptoms;
 
   DiseasesDiscoveryState copyWith({
@@ -27,6 +31,8 @@ class DiseasesDiscoveryState extends Equatable {
     List<String>? filteredSymptoms,
     List<String>? selectedSymptoms,
     Locale? locale,
+    bool? isSpeaking,
+    bool? isDiagnosisSpoken,
   }) {
     return DiseasesDiscoveryState(
       isListening: isListening ?? this.isListening,
@@ -36,6 +42,8 @@ class DiseasesDiscoveryState extends Equatable {
       selectedSymptoms: selectedSymptoms ?? this.selectedSymptoms,
       advices: advices ?? this.advices,
       locale: locale ?? this.locale,
+      isSpeaking: isSpeaking ?? this.isSpeaking,
+      isDiagnosisSpoken: isDiagnosisSpoken ?? this.isDiagnosisSpoken,
     );
   }
 

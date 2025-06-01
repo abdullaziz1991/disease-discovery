@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:http/http.dart' as http;
 
@@ -20,6 +21,7 @@ part 'diseases_discovery_state.dart';
 class DiseasesDiscoveryBloc
     extends Bloc<DiseasesDiscoveryEvent, DiseasesDiscoveryState> {
   final stt.SpeechToText _speech = stt.SpeechToText();
+  final FlutterTts flutterTts = FlutterTts();
   DiseasesDiscoveryBloc() : super(DiseasesDiscoveryState()) {
     // DiseasesDiscoveryBloc()
     // هذا هو المُنشئ للكلاس DiseasesDiscoveryBloc. يتم استدعاؤه عند إنشاء كائن من هذا الكلاس.
@@ -160,7 +162,6 @@ class DiseasesDiscoveryBloc
 
       emit(state.copyWith(filteredSymptoms: results));
     });
-//results= [ nodal_skin_eruptions,stomach_pain, continuous_sneezing, skin_rash,joint_pain , acidity]
     on<ToggleSymptomSelection>((event, emit) async {
       // state.selectedSymptoms = ['chills'];
 
@@ -190,6 +191,40 @@ class DiseasesDiscoveryBloc
       // تحديث EasyLocalization أيضًا
       emit(state.copyWith(locale: newLocale));
     });
+    //
+    // on<SetIsSpeakingEvent>((event, emit) {
+    //   // emit(state.copyWith(isSpeaking: event.isSpeaking));
+    // });
+
+    // on<SetDiagnosisSpokenEvent>((event, emit) {
+    //   emit(state.copyWith(isDiagnosisSpoken: event.isSpoken));
+    // });
+    on<ToggleSpeechEvent>((event, emit) async {
+      if (state.isSpeaking) {
+        await flutterTts.stop();
+        emit(state.copyWith(isSpeaking: false));
+      } else {
+        String combinedText = '';
+        if (state.diagnosis.isNotEmpty) {
+          combinedText += '${'Diagnosis'.tr()}: ${state.diagnosis.tr()}. ';
+        }
+        if (state.advices.isNotEmpty) {
+          final advText = state.advices.map((a) => a.tr()).join('. ');
+          combinedText += '${'Advices'.tr()}: $advText.';
+        }
+
+        await flutterTts.setLanguage(event.context.locale.languageCode);
+        await flutterTts.speak(combinedText);
+
+        emit(state.copyWith(isSpeaking: true));
+      }
+    });
+    //
+    on<StopSpeechEvent>((event, emit) async {
+      await flutterTts.stop();
+      emit(state.copyWith(isSpeaking: false));
+    });
+
   }
-//
+
 }
