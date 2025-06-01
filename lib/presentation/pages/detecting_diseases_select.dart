@@ -1,4 +1,3 @@
-import 'package:disease_discovery_project/app/enum_file.dart';
 import 'package:disease_discovery_project/presentation/widgets/app_text_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

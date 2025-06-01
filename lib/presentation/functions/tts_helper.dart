@@ -34,6 +34,7 @@ Future<void> waitForSpeechCompletion() async {
   flutterTts.setCompletionHandler(() {
     isSpeaking = false;
   });
+// الدالة waitForSpeechCompletion() تنتظر انتهاء الكلام الذي يتم تشغيله بواسطة flutterTts.speak() قبل المتابعة في الكود.
 
   while (isSpeaking) {
     await Future.delayed(Duration(milliseconds: 500));

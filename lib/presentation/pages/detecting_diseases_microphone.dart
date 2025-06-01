@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../../app/app_button.dart';
-import '../../app/enum_file.dart';
 import '../bloc/diseases_discovery_bloc.dart';
 import '../functions/tts_helper.dart';
 import '../widgets/app_text_style.dart';
 
 class DetectingDiseasesMicrophone extends StatefulWidget {
   const DetectingDiseasesMicrophone({super.key});
-
   @override
   State<DetectingDiseasesMicrophone> createState() =>
       _DetectingDiseasesMicrophoneState();
@@ -53,8 +51,7 @@ class _DetectingDiseasesMicrophoneState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
       padding: const EdgeInsets.all(16.0),
       alignment: Alignment.center,
       child: SingleChildScrollView(
@@ -96,6 +93,7 @@ class _DetectingDiseasesMicrophoneState
                                       color: const Color(0xFFFFD3D3)
                                           .withOpacity(0.5))));
                         }),
+                        // دائما موجود
                   Container(
                       padding: const EdgeInsets.all(60),
                       decoration: const BoxDecoration(
@@ -223,6 +221,6 @@ class _DetectingDiseasesMicrophoneState
           ]);
         }),
       ),
-    ));
+    );
   }
 }

@@ -1,4 +1,0 @@
-
-
-enum DiagnosticMethod { fromMic, fromSelection }
-

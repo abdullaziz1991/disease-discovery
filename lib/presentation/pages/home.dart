@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../app/app_appBar.dart';
 import 'detecting_diseases_microphone.dart';
 import 'detecting_diseases_select.dart';
+import 'setecting_herbs.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -29,8 +30,12 @@ class _HomeState extends State<Home> {
         'Screen': DetectingDiseasesSelect(),
         'Title': "Select Symptoms".tr(),
       },
+      {
+        'Screen': SeletectingHerbs(),
+        'Title': "Select Herbs".tr(),
+      },
     ];
-   
+
     return Scaffold(
         appBar:
             AppAppBar(title: screens[_selectedScreenIndex]['Title'].toString()),
@@ -46,6 +51,8 @@ class _HomeState extends State<Home> {
                 icon: const Icon(Icons.dashboard), label: "Symptom Input".tr()),
             BottomNavigationBarItem(
                 icon: const Icon(Icons.cabin), label: "Select Symptoms".tr()),
+            BottomNavigationBarItem(
+                icon: const Icon(Icons.cabin), label: "Select Herbs".tr()),
           ],
         ));
   }

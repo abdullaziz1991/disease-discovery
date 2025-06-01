@@ -3,258 +3,243 @@
 
 
 advice_mapping = {
-     '(vertigo) Paroxysmal Positional Vertigo': [
-    # '(vertigo) Paroymsal  Positional Vertigo': [
-        'Perform Epley maneuver (consult a doctor for guidance)',
-        'Avoid sudden head movements',
-        'Stay hydrated and maintain a balanced diet',
-        'Consult an ENT specialist if symptoms persist'
-    ],
-    'AIDS': [
-        'Seek immediate medical care and start antiretroviral therapy (ART)',
-        'Practice safe sex and use protection',
-        'Avoid sharing needles or personal items',
-        'Join a support group for emotional and psychological support'
-    ],
-    'Acne': [
-        'Wash your face twice daily with a gentle cleanser',
-        'Avoid picking or squeezing pimples',
-        'Use non-comedogenic skincare products',
-        'Consult a dermatologist for severe cases'
-    ],
-    'Alcoholic hepatitis': [
-        'Stop alcohol consumption immediately',
-        'Follow a liver-friendly diet (low fat, high protein)',
-        'Seek medical treatment for liver inflammation',
-        'Consider joining an alcohol rehabilitation program'
-    ],
-    'Allergy': [
-        'Identify and avoid allergens (e.g., pollen, dust, certain foods)',
-        'Take antihistamines as prescribed by a doctor',
-        'Use a nasal spray for nasal congestion',
-        'Carry an epinephrine auto-injector if you have severe allergies'
-    ],
-    'Arthritis': [
-        'Engage in low-impact exercises like swimming or yoga',
-        'Apply hot or cold packs to reduce pain and swelling',
-        'Take prescribed anti-inflammatory medications',
-        'Maintain a healthy weight to reduce joint stress'
-    ],
-    'Bronchial Asthma': [
-        'Use inhalers as prescribed by your doctor',
-        'Avoid triggers like smoke, pollen, and dust',
-        'Monitor your breathing regularly',
-        'Seek emergency care during severe asthma attacks'
-    ],
-    'Cervical spondylosis': [
-        'Practice neck exercises and stretches',
-        'Maintain good posture while sitting and standing',
-        'Use a neck brace if recommended by a doctor',
-        'Apply heat or cold packs to relieve pain'
-    ],
-    'Chicken pox': [
-        'Keep the skin clean and dry to prevent infection',
-        'Use calamine lotion to relieve itching',
-        'Stay hydrated and rest',
-        'Avoid scratching to prevent scarring'
-    ],
-    'Chronic cholestasis': [
-        'Follow a low-fat diet',
-        'Take prescribed medications to manage symptoms',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Consult a hepatologist for specialized care'
-    ],
-    'Common Cold': [
-        'Rest and stay hydrated',
-        'Use over-the-counter cold medications',
-        'Gargle with salt water for sore throat',
-        'Consult a doctor if symptoms persist beyond a week'
-    ],
-    'Dengue': [
-        'Stay hydrated and drink plenty of fluids',
-        'Take paracetamol for fever (avoid aspirin or ibuprofen)',
-        'Rest and monitor platelet count regularly',
-        'Seek immediate medical attention if bleeding occurs'
+     'Influenza': [
+"Vaccination: Get the flu vaccine annually.",
+"Hygiene: Wash hands frequently and avoid close contact with sick individuals.",
+"Rest: Ensure you get plenty of rest to help your immune system.",
+"Hydration: Drink plenty of fluids to stay hydrated.",
+"Seek medical advice: If symptoms worsen or you have underlying health conditions."
+
     ],
     'Diabetes': [
-        'Monitor blood sugar levels regularly',
-        'Follow a balanced diet low in refined sugars',
-        'Exercise regularly to maintain healthy glucose levels',
-        'Take prescribed medications or insulin as directed'
-    ],
-    # 
-    'Dimorphic hemmorhoids(piles)': [
-        'Increase fiber intake to prevent constipation',
-        'Use over-the-counter creams or suppositories',
-        'Take warm sitz baths to relieve discomfort',
-        'Consult a doctor for severe or persistent cases'
-    ],
-    'Drug Reaction': [
-        'Stop taking the medication immediately',
-        'Seek medical attention for severe reactions',
-        'Take antihistamines for mild allergic reactions',
-        'Inform your doctor about the reaction for future reference'
-    ],
-    'Fungal infection': [
-        'Keep the affected area clean and dry',
-        'Use antifungal creams or powders',
-        'Wear breathable clothing',
-        'Consult a doctor if the infection persists'
-    ],
-    # 'GERD': [
-   'GERD (Gastroesophageal Reflux Disease)': [
-        'Avoid spicy, fatty, and acidic foods',
-        'Eat smaller, more frequent meals',
-        'Elevate the head of your bed while sleeping',
-        'Take antacids or prescribed medications'
-    ],
-    'Gastroenteritis': [
-        'Stay hydrated with electrolyte solutions',
-        'Follow the BRAT diet (bananas, rice, applesauce, toast)',
-        'Avoid dairy and fatty foods',
-        'Rest and consult a doctor if symptoms worsen'
-    ],
-    'Heart attack': [
-        'Call emergency services immediately',
-        'Chew and swallow an aspirin (if not allergic)',
-        'Stay calm and rest while waiting for help',
-        'Avoid physical exertion'
-    ],
-    'Hepatitis B': [
-        'Get vaccinated if not already immunized',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Follow a liver-friendly diet',
-        'Consult a hepatologist for antiviral treatment'
-    ],
-    'Hepatitis C': [
-        'Avoid sharing personal items like razors or toothbrushes',
-        'Follow a liver-friendly diet',
-        'Take prescribed antiviral medications',
-        'Avoid alcohol consumption'
-    ],
-    'Hepatitis D': [
-        'Seek specialized medical care for co-infection with Hepatitis B',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Follow a liver-friendly diet',
-        'Monitor liver function regularly'
-    ],
-    'Hepatitis E': [
-        'Stay hydrated and rest',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Follow a liver-friendly diet',
-        'Consult a doctor for severe cases'
+       "Monitor Blood Sugar: Regularly check your blood sugar levels.",
+"Healthy Diet: Follow a balanced diet rich in whole grains, vegetables, and lean proteins.",
+"Exercise: Engage in regular physical activity to help manage weight and blood sugar levels.",
+"Medication Adherence: Take prescribed medications as directed.",
+"Regular Check-ups: Schedule regular appointments with your healthcare provider."
+
     ],
     'Hypertension': [
-        'Monitor blood pressure regularly',
-        'Reduce salt intake and follow a heart-healthy diet',
-        'Exercise regularly and maintain a healthy weight',
-        'Take prescribed antihypertensive medications'
+       "Healthy Diet: Follow a heart-healthy diet low in salt and rich in fruits and vegetables.",
+"Exercise: Aim for at least 150 minutes of moderate aerobic activity each week.",
+"Limit Substances: Reduce alcohol intake and avoid smoking.",
+"Weight Management: Maintain a healthy weight.",
+"Monitor Blood Pressure: Regularly check your blood pressure at home or during doctor visits."
+
     ],
-    'Hyperthyroidism': [
-        'Take prescribed antithyroid medications',
-        'Avoid iodine-rich foods (e.g., seafood, iodized salt)',
-        'Monitor thyroid levels regularly',
-        'Consult an endocrinologist for specialized care'
+    'Asthma': [
+        "Avoid Triggers: Identify and avoid allergens or irritants that trigger your asthma.",
+"Medication Use: Use prescribed inhalers and medications as directed.",
+"Action Plan: Work with your doctor to develop an asthma action plan.",
+"Regular Check-ups: Have regular follow-ups with your healthcare provider.",
+"Stay Active: Engage in regular physical activity as tolerated."
+
     ],
-    'Hypoglycemia': [
-        'Consume fast-acting carbohydrates (e.g., glucose tablets, juice)',
-        'Monitor blood sugar levels regularly',
-        'Eat small, frequent meals',
-        'Consult a doctor for recurrent episodes'
+    'Depression': [
+       "Professional Support: Consult a mental health professional for therapy or counseling.",
+"Medication: Take antidepressant medications as directed if prescribed.",
+"Social Support: Maintain social connections and communicate with friends and family.",
+"Exercise: Engage in regular physical activity to boost mood.",
+"Healthy Lifestyle: Eat a balanced diet, get enough sleep, and practice relaxation techniques."
+
+    ],
+    'Arthritis': [
+       "Low-Impact Exercise: Engage in low-impact exercises like swimming or walking to improve joint function.",
+"Weight Management: Maintain a healthy weight to reduce stress on joints.",
+"Physical Therapy: Consider working with a physical therapist for personalized exercises.",
+"Medication: Use medications as prescribed for pain relief and inflammation control.",
+"Hot/Cold Therapy: Apply heat or cold packs to affected joints for relief."
+
+    ],
+    'Heart Disease': [
+       "Healthy Diet: Follow a heart-healthy diet low in saturated fats and cholesterol.",
+"Exercise: Aim for at least 150 minutes of moderate exercise per week.",
+"Quit Smoking: Avoid tobacco products and seek help to quit if necessary.",
+"Stress Management: Practice stress-reducing techniques like meditation or yoga.",
+"Regular Monitoring: Monitor blood pressure, cholesterol levels, and other risk factors."
+
+    ],
+    "Alzheimer_s_Disease": [
+       "Mental Activity: Engage in activities that challenge the brain, like puzzles or learning new skills.",
+"Physical Activity: Stay physically active to promote overall health.",
+"Healthy Diet: Follow a balanced diet rich in fruits, vegetables, and healthy fats.",
+"Social Interaction: Stay socially active to maintain cognitive function and emotional well-being.",
+"Routine: Create a daily routine to provide structure and familiarity."
+
+    ],
+
+
+
+
+    
+"Hepatitis": [
+    "Follow Medical Advice: Adhere to treatment plans provided by your healthcare provider.",
+    "Avoid Alcohol: Limit or eliminate alcohol consumption to protect the liver.",
+    "Healthy Diet: Eat a balanced diet rich in fruits, vegetables, and whole grains.",
+    "Vaccination: Get vaccinated for hepatitis A and B if at risk."
+  ],
+  "Allergies": [
+    "Keep a diary to track what causes your allergic reactions",
+    "Stay indoors during high pollen seasons and use air purifiers",
+    "Use antihistamines, nasal sprays, or other medications as prescribed by your doctor"
+  ],
+  "Pneumonia": [
+    "Ensure you get plenty of rest and drink fluids to stay hydrated",
+    "Take antibiotics or antiviral medications as prescribed",
+    "Stay away from smoke and pollutants that can worsen lung health"
+  ],
+  "Stomach Ulcer": [
+    "Avoid spicy foods, caffeine, and alcohol that can irritate the stomach lining",
+    "Use proton pump inhibitors or H2 blockers as directed by your healthcare provider",
+    "Engage in relaxation techniques like meditation or deep breathing exercises"
+  ],
+  "Crohn_s_Disease": [
+    "Keep a food diary to identify trigger foods and work with a dietitian for personalized advice",
+    "Take anti-inflammatory medications or immunosuppressants as prescribed",
+    "Drink plenty of fluids, especially during flare-ups"
+  ],
+  "Ulcerative Colitis": [
+    "Focus on a diet low in fiber during flare-ups and rich in nutrients when in remission",
+    "Follow your doctor's recommendations regarding anti-inflammatory medications",
+    "Schedule regular check-ups to monitor your condition"
+  ],
+  "Kidney Stones": [
+    "Drink plenty of water to help prevent stone formation and flush out the kidneys",
+    "Limit salt and animal protein; consult with a healthcare provider for dietary guidance",
+    "Regularly monitor kidney health with your doctor"
+  ],
+  "Cystitis": [
+    "Drink plenty of water to help flush bacteria from the urinary tract",
+    "Limit caffeine, alcohol, and spicy foods that can irritate the bladder",
+    "Always wipe from front to back after using the toilet"
+  ],
+  "Anemia": [
+    "Include foods such as red meat, beans, lentils, and spinach in your diet",
+    "Consume vitamin C-rich foods to enhance iron absorption (e.g., citrus fruits)",
+    "Have your hemoglobin levels checked regularly by your healthcare provider"
+  ],
+  "Brucellosis": [
+    "Follow Medical Advice: Adhere to treatment plans provided by your healthcare provider.",
+    "Do not consume unpasteurized dairy products or undercooked meat",
+    "Report any persistent symptoms to your doctor for proper management"
+  ],
+  "Parkinson_s_Disease": [
+    "Engage in physical activity to improve mobility and balance",
+    "Eat a balanced diet rich in fruits, vegetables, whole grains, and healthy fats",
+    "Participate in cognitive exercises and social activities to support brain health"
+  ],
+ 
+  "Multiple Sclerosis": [
+    "Follow Medication Plan: Take disease-modifying therapies as prescribed.",
+    "Manage Stress: Get enough rest and avoid overexertion.",
+    "Stay Active: Engage in low-impact exercise to maintain strength and balance."
+  ],
+
+
+
+
+   'Ear Infection': [
+     'See a Doctor: Use antibiotics or ear drops if prescribed.',
+     'Keep the Ear Dry: Avoid water exposure during infection.',
+     'Pain Relief: Use over-the-counter pain relievers like ibuprofen.'
+    ],
+    'Type 1 Diabetes': [
+     'Monitor Blood Sugar: Check glucose levels regularly.',
+     'Use Insulin Properly: Follow your insulin plan closely.',
+     'Healthy Eating: Eat a balanced diet and avoid sugary foods.'
+    ],
+   'Type 2 Diabetes': [
+     'Exercise Regularly: Aim for at least 150 minutes of moderate activity weekly.',
+     'Healthy Diet: Focus on whole grains, vegetables, and lean proteins.',
+     'Take Medications: Follow your doctor\'s instructions regarding medication or insulin.'
     ],
     'Hypothyroidism': [
-        'Take prescribed thyroid hormone replacement therapy',
-        'Monitor thyroid levels regularly',
-        'Follow a balanced diet with adequate iodine',
-        'Consult an endocrinologist for adjustments'
+     'Take Thyroid Medication: Use levothyroxine as prescribed.',
+     'Routine Testing: Check TSH levels regularly.',
+     'Eat Smart: Include iodine-rich foods like fish and dairy.'
+     ],
+    'Hyperthyroidism': [
+     'Medication Management: Take anti-thyroid drugs as directed.',
+     'Avoid Stimulants: Limit caffeine and stressful activities.',
+     'Watch for Symptoms: Monitor for fast heartbeat, weight loss, and anxiety.'
     ],
-    'Impetigo': [
-        'Keep the affected area clean and dry',
-        'Use prescribed antibiotic creams or ointments',
-        'Avoid scratching to prevent spreading',
-        'Consult a doctor for severe cases'
+    'HIV': [
+     'Stick to ART: Take antiretroviral therapy daily without missing doses.',
+     'Boost Immunity: Eat a nutritious diet and avoid smoking/alcohol.',
+     'Routine Monitoring: Track viral load and CD4 counts with your doctor.'
     ],
-    'Jaundice': [
-        'Stay hydrated and rest',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Follow a liver-friendly diet',
-        'Consult a doctor for underlying causes'
+    'Viral Hepatitis (A, B, C)': [
+     'Medical Treatment: Follow your doctor’s treatment plan, including antivirals if needed.',
+     'Avoid Alcohol: Protect your liver from further damage.',
+     'Healthy Lifestyle: Eat well and avoid unnecessary medications that affect the liver.'
+     ],
+    'Rheumatoid Arthritis': [
+     'Medication Adherence: Use prescribed anti-inflammatory or immune-modulating drugs.',
+     'Gentle Exercise: Stay active with low-impact activities like swimming or stretching.',
+     'Physical Therapy: May help relieve pain and improve joint function.'
     ],
-    'Malaria': [
-        'Take prescribed antimalarial medications',
-        'Stay hydrated and rest',
-        'Use mosquito nets and repellents to prevent further bites',
-        'Seek immediate medical attention for severe symptoms'
+    'Stroke': [
+     'Take Prescribed Medications: For blood pressure, cholesterol, or blood thinning.',
+     'Start Rehabilitation: Physical, speech, or occupational therapy as needed.',
+     'Prevent Future Strokes: Quit smoking, control diabetes, and maintain a healthy lifestyle.'
     ],
+    'Eczema': [
+     'Moisturize Often: Use fragrance-free creams or ointments to keep skin hydrated.',
+     'Avoid Triggers: Identify and avoid irritants like soaps, fabrics, or allergens.',
+     'Use Medications: Apply corticosteroid creams or take antihistamines as prescribed.'
+    ],
+
+
+
     'Migraine': [
-        'Rest in a dark, quiet room',
-        'Take prescribed migraine medications',
-        'Avoid triggers like stress, certain foods, or bright lights',
-        'Stay hydrated and maintain a regular sleep schedule'
+     'Identify Triggers: Keep a diary to track food, sleep, or stress triggers.',
+     'Medication: Use prescribed migraine medications at the first sign of symptoms.',
+     'Lifestyle Balance: Get regular sleep, eat on time, and manage stress.'
     ],
-   'Osteoarthritis': [
-    # 'Osteoarthristis': [
-        'Engage in low-impact exercises like swimming or walking',
-        'Use hot or cold packs to relieve pain',
-        'Take prescribed pain relievers or anti-inflammatory drugs',
-        'Maintain a healthy weight to reduce joint stress'
+    'Food Poisoning': [
+     'Hydration: Drink water or oral rehydration solutions to prevent dehydration.',
+     'Rest: Allow your body time to recover by getting plenty of rest.',
+     'Seek Help: If symptoms are severe or last more than 2 days, consult a doctor.'
     ],
-    'Paralysis (brain hemorrhage)': [
-        'Seek immediate emergency medical care',
-        'Follow a rehabilitation program for recovery',
-        'Work with a physical therapist for mobility exercises',
-        'Monitor for complications like blood clots or infections'
+    'Sore Throat (Tonsillitis)': [
+     'Hydrate and Rest: Drink warm fluids and rest your voice.',
+     'Medication: Take pain relievers or antibiotics if prescribed.',
+     'Avoid Irritants: Stay away from smoke or dry air.'
     ],
-    'Peptic ulcer disease': [
-#    'Peptic ulcer diseae': [
-        'Avoid spicy, acidic, and fatty foods',
-        'Take prescribed antacids or proton pump inhibitors',
-        'Avoid smoking and alcohol',
-        'Consult a doctor for persistent symptoms'
+    'Contact Dermatitis': [
+     'Avoid the Allergen/Irritant: Identify and avoid the cause of the reaction.',
+     'Topical Creams: Use anti-itch or steroid creams as directed.',
+     'Cool Compresses: Apply to soothe the affected skin.'
     ],
-    'Pneumonia': [
-        'Take prescribed antibiotics or antiviral medications',
-        'Stay hydrated and rest',
-        'Use a humidifier to ease breathing',
-        'Seek emergency care if breathing difficulties worsen'
+   'Anxiety Disorder': [
+     'Practice Relaxation: Use breathing exercises, meditation, or yoga.',
+     'Therapy: Cognitive behavioral therapy (CBT) can be very effective.',
+     'Medication: Use anxiolytics or antidepressants if prescribed by a professional.'
     ],
-    'Psoriasis': [
-        'Keep the skin moisturized with emollients',
-        'Use prescribed topical treatments or light therapy',
-        'Avoid triggers like stress or certain foods',
-        'Consult a dermatologist for severe cases'
+    'ADHD': [
+     'Medication Management: Take stimulants or non-stimulants as prescribed.',
+     'Structured Routine: Keep a consistent schedule for tasks and activities.',
+     'Behavioral Therapy: Helps improve focus, organization, and impulse control.'
     ],
-    'Tuberculosis': [
-        'Take prescribed antibiotics for the full course',
-        'Practice good hygiene to prevent spreading',
-        'Get plenty of rest and eat a balanced diet',
-        'Consult a doctor for regular follow-ups'
+    'Gout': [
+     'Dietary Changes: Avoid red meat, seafood, and sugary drinks; limit alcohol.',
+     'Hydration: Drink plenty of water to help flush out uric acid.',
+     'Take Medications: Use anti-inflammatory drugs and uric acid-lowering medications.'
     ],
-    'Typhoid': [
-        'Take prescribed antibiotics',
-        'Stay hydrated and rest',
-        'Follow a high-calorie, easily digestible diet',
-        'Practice good hygiene to prevent spreading'
+    'Food Allergy': [
+     'Avoid Allergen: Read labels carefully and avoid known allergens.',
+     'Emergency Plan: Carry an epinephrine auto-injector if prescribed.',
+     'Medical ID: Wear a bracelet or carry a card stating your allergy.'
     ],
-    'Urinary tract infection': [
-        'Drink plenty of water to flush out bacteria',
-        'Take prescribed antibiotics',
-        'Avoid caffeine and alcohol',
-        'Consult a doctor if symptoms persist'
+    'Syphilis': [
+     'Complete Treatment: Follow the full course of antibiotics prescribed.',
+     'Safe Practices: Use protection and get tested regularly.',
+     'Notify Partners: Inform sexual partners so they can get tested and treated.'
     ],
-    'Varicose veins': 
- 
-    [
-        'Elevate your legs to reduce swelling',
-        'Wear compression stockings',
-        'Exercise regularly to improve circulation',
-        'Consult a doctor for severe cases'
-    ],
-   'Hepatitis A': [
-    # 'hepatitis A': [
-        'Stay hydrated and rest',
-        'Avoid alcohol and hepatotoxic drugs',
-        'Follow a liver-friendly diet',
-        'Get vaccinated if not already immunized'
+    'Rheumatic Fever': [
+     'Treat Strep Throat Promptly: Prevent rheumatic fever by treating strep infections early.',
+     'Follow Medication Plan: Use antibiotics and anti-inflammatory drugs as prescribed.',
+     'Regular Follow-Up: Monitor for potential heart complications.'
     ]
 }
+

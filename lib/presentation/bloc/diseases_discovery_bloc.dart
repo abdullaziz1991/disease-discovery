@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:disease_discovery_project/app/app_appBar.dart';
-import 'package:disease_discovery_project/app/enum_file.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +12,6 @@ import '../../app/app_snack_bar.dart';
 import '../../app/constant.dart';
 import '../functions/change_list.dart';
 import '../functions/convert_text_to_symptoms.dart';
-import '../functions/extract_symptoms.dart';
 import '../functions/remove_duplicate_words.dart';
 
 part 'diseases_discovery_event.dart';
@@ -58,12 +55,12 @@ class DiseasesDiscoveryBloc
       //     removeDuplicateWords("${state.recognizedText} ${event.newText}");
       // print(updatedText);
       //   emit(state.copyWith(recognizedText: updatedText));
-      print(event.newText);
-      print("event.newText -----------------------------------");
+      // print(event.newText);
+      // print("event.newText -----------------------------------");
       String newText = removeDuplicateWords(event.newText);
       String updatedText = "${state.recognizedText} $newText";
       emit(state.copyWith(recognizedText: updatedText));
-      String symptom = SymptomMapper.convertTextToSymptom(event.newText);
+      String symptom = SymptomMapper.convertTextToSymptom(newText);
       if (symptom.isNotEmpty && !state.selectedSymptoms.contains(symptom)) {
         List<String> selectedSymptoms = List.from(state.selectedSymptoms)
           ..add(symptom);
@@ -90,8 +87,8 @@ class DiseasesDiscoveryBloc
 
       Map<String, String> symptomsData = changeList.getUpdatedList();
 
-      print(state.selectedSymptoms);
-      print("state.selectedSymptoms -------------------");
+      // print(state.selectedSymptoms);
+      // print("state.selectedSymptoms -------------------");
       print(symptomsData);
       print("symptomsData -------------------");
 
@@ -107,25 +104,28 @@ class DiseasesDiscoveryBloc
                 headers: {'Content-Type': 'application/json'},
                 body: jsonEncode(symptomsData))
             .timeout(const Duration(seconds: 2));
-
-        //symptomsData="{'skin_rash':"1",'chills': "1"}"
-
-        // تحديد مهلة 10 ثوانٍ
         if (response.statusCode == 200) {
+          String disease;
+          List<String> adviceList;
           Map<String, dynamic> data = json.decode(response.body);
           print(data);
           print("data -------------------------");
-          String disease = data["disease"];
-          List<String> adviceList = List<String>.from(data["advice"]);
-          print(disease);
-          print("disease -------------------");
-          print(adviceList);
-          print("adviceList -------------------");
-          emit(state.copyWith(diagnosis: disease, advices: adviceList));
+          double confidence =
+              double.tryParse(data["confidence"].toString()) ?? 0.0;
+          print(confidence);
+          print("confidence ---------------------------------- -----");
+          if (confidence > 67) {
+            disease = data["disease"];
+            adviceList = List<String>.from(data["advice"]);
+            emit(state.copyWith(diagnosis: disease, advices: adviceList));
+          } else {
+            disease = "No diagnosis".tr();
+            adviceList = ["Please consult a doctor".tr()];
+            emit(state.copyWith(diagnosis: disease, advices: adviceList));
+          }
         } else {
           print("خطأ في الطلب: ${response.statusCode}");
           AppSnackBar.show(event.context, "An unexpected error occurred".tr());
-          // emit(state.copyWith(diagnosis: "حدث خطأ أثناء التشخيص", advices: []));
         }
       } on TimeoutException catch (_) {
         print("الطلب استغرق وقتًا طويلاً ولم يتم استلام استجابة.");
