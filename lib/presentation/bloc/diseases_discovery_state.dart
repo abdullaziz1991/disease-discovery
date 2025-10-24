@@ -9,11 +9,13 @@ class DiseasesDiscoveryState extends Equatable {
   List<String> filteredSymptoms;
   List<String> selectedSymptoms;
   Locale locale;
-  final bool isSpeaking;
-  final bool isDiagnosisSpoken;
+  bool isSpeaking;
+  bool isDiagnosisSpoken;
+  bool isDiagnosisButtonPressed;
   DiseasesDiscoveryState({
     List<String>? filteredSymptoms,
     this.isListening = false,
+    this.isDiagnosisButtonPressed = false,
     this.recognizedText = "",
     this.diagnosis = "",
     this.advices = const [],
@@ -33,6 +35,7 @@ class DiseasesDiscoveryState extends Equatable {
     Locale? locale,
     bool? isSpeaking,
     bool? isDiagnosisSpoken,
+    bool? isDiagnosisButtonPressed,
   }) {
     return DiseasesDiscoveryState(
       isListening: isListening ?? this.isListening,
@@ -44,6 +47,8 @@ class DiseasesDiscoveryState extends Equatable {
       locale: locale ?? this.locale,
       isSpeaking: isSpeaking ?? this.isSpeaking,
       isDiagnosisSpoken: isDiagnosisSpoken ?? this.isDiagnosisSpoken,
+      isDiagnosisButtonPressed:
+          isDiagnosisButtonPressed ?? this.isDiagnosisButtonPressed,
     );
   }
 
@@ -55,6 +60,9 @@ class DiseasesDiscoveryState extends Equatable {
         advices,
         filteredSymptoms,
         selectedSymptoms,
-        locale
+        locale,
+        isSpeaking,
+        isDiagnosisSpoken,
+        isDiagnosisButtonPressed
       ];
 }

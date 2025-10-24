@@ -80,3 +80,5 @@ class UpdateSpeakingStatus extends DiseasesDiscoveryEvent {
 
   UpdateSpeakingStatus(this.isSpeaking);
 }
+
+class StopDiagnosisSpokenEvent extends DiseasesDiscoveryEvent {}

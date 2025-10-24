@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // String x = true;
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => DiseasesDiscoveryBloc()),

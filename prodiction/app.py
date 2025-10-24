@@ -21,7 +21,6 @@ def predict():
 
         return jsonify({
             "disease": predicted_disease,
-            # "confidence": f"{confidence}%",
             "confidence": confidence,
             "advice": advice
         })
@@ -30,7 +29,9 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.130', port=5000, debug=True)
+     app.run(host='192.168.1.130', port=5000, debug=True)
+    # app.run(host='192.168.43.200', port=5000, debug=True)
+    # app.run(host='192.168.79.129', port=5000, debug=True)
 
 
 

@@ -1,4 +1,3 @@
-import 'package:disease_discovery_project/app/app_snack_bar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../../app/app_button.dart';
 import '../bloc/diseases_discovery_bloc.dart';
+import '../functions/tts_helper.dart';
 import '../widgets/app_text_style.dart';
 
 class DetectingDiseasesMicrophone extends StatefulWidget {
@@ -52,7 +52,7 @@ class _DetectingDiseasesMicrophoneState
     } else {
       String combinedText = '';
       if (state.diagnosis.isNotEmpty) {
-        combinedText += '${"Diagnosis: ".tr()}: ${state.diagnosis.tr()}. ';
+        combinedText += '${'Diagnosis'.tr()}: ${state.diagnosis.tr()}. ';
       }
       if (state.advices.isNotEmpty) {
         final advText = state.advices.map((a) => a.tr()).join('. ');
@@ -142,46 +142,38 @@ class _DetectingDiseasesMicrophoneState
                       children: [
                         InkWell(
                           onTap: () async {
-                            if (state.selectedSymptoms.isNotEmpty) {
-                              setState(() => isDiagnosisSpoken = false);
-                              context
-                                  .read<DiseasesDiscoveryBloc>()
-                                  .add(SendForDiagnosisEvent(
-                                    context: context,
-                                  ));
+                            setState(() => isDiagnosisSpoken = false);
 
-                              await Future.delayed(
-                                  const Duration(milliseconds: 800));
+                            final bloc = context.read<DiseasesDiscoveryBloc>();
+                            bloc.add(SendForDiagnosisEvent(
+                              context: context,
+                            ));
 
-                              // final state = bloc.state;
+                            await Future.delayed(
+                                const Duration(milliseconds: 800));
 
-                              String combinedText = '';
-                              if (state.diagnosis.isNotEmpty) {
-                                combinedText +=
-                                    '${"Diagnosis: ".tr()}: ${state.diagnosis.tr()}. ';
-                              }
-                              if (state.advices.isNotEmpty) {
-                                final advText =
-                                    state.advices.map((a) => a.tr()).join('. ');
-                                combinedText += '${'Advices'.tr()}: $advText.';
-                              }
+                            final state = bloc.state;
 
-                              final tts = FlutterTts();
-                              await tts
-                                  .setLanguage(context.locale.languageCode);
-                              await tts.speak(combinedText);
-
-                              tts.setCompletionHandler(() {
-                                setState(() {
-                                  isDiagnosisSpoken = true;
-                                });
-                              });
-                            } else {
-                              AppSnackBar.show(
-                                  context,
-                                  "You have not record any disease symptoms"
-                                      .tr());
+                            String combinedText = '';
+                            if (state.diagnosis.isNotEmpty) {
+                              combinedText +=
+                                  '${'Diagnosis'.tr()}: ${state.diagnosis.tr()}. ';
                             }
+                            if (state.advices.isNotEmpty) {
+                              final advText =
+                                  state.advices.map((a) => a.tr()).join('. ');
+                              combinedText += '${'Advices'.tr()}: $advText.';
+                            }
+
+                            final tts = FlutterTts();
+                            await tts.setLanguage(context.locale.languageCode);
+                            await tts.speak(combinedText);
+
+                            tts.setCompletionHandler(() {
+                              setState(() {
+                                isDiagnosisSpoken = true;
+                              });
+                            });
                           },
                           child: AppButton(
                             title: "Diagnose Disease".tr(),
@@ -204,6 +196,46 @@ class _DetectingDiseasesMicrophoneState
                       ],
                     ),
                   ),
+
+                  // جاري النطق
+                  if ((state.diagnosis.isNotEmpty ||
+                          state.advices.isNotEmpty) &&
+                      !isDiagnosisSpoken)
+                    InkWell(
+                      onTap: () async {
+                        setState(() {
+                          isSpeaking = true;
+                          toggleSpeech(state);
+                          isDiagnosisSpoken = true;
+                        });
+
+                        // await flutterTts.stop();
+                        // setState(() => isSpeaking = false);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.5,
+                                color: Colors.deepPurple,
+                              ),
+                            ),
+                            SizedBox(width: 12),
+                            AppTextStyle(
+                              text: "Speaking...".tr(),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepPurple,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -215,39 +247,11 @@ class _DetectingDiseasesMicrophoneState
                             trailing:
                                 const Icon(Icons.check, color: Colors.green),
                             onTap: () {
-                              context
-                                  .read<DiseasesDiscoveryBloc>()
-                                  .add(ToggleSymptomSelection(symptom));
+                              // context
+                              //     .read<DiseasesDiscoveryBloc>()
+                              //     .add(ToggleSymptomSelection(symptom));
                             });
                       }),
-                  // جاري النطق
-                  if ((state.diagnosis.isNotEmpty ||
-                          state.advices.isNotEmpty) &&
-                      !isDiagnosisSpoken)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2.5,
-                              color: Colors.deepPurple,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          AppTextStyle(
-                            text: "Speaking...".tr(),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.deepPurple,
-                          ),
-                        ],
-                      ),
-                    ),
-
                   // الكرت يظهر فقط بعد انتهاء الصوت
                   if ((state.diagnosis.isNotEmpty ||
                           state.advices.isNotEmpty) &&
@@ -271,7 +275,7 @@ class _DetectingDiseasesMicrophoneState
                                   await t
                                       .setLanguage(context.locale.languageCode);
                                   await t.speak(
-                                      '${"Diagnosis: ".tr()}: ${state.diagnosis.tr()}');
+                                      '${"Diagnosis: ".tr()} ${state.diagnosis.tr()}');
                                 },
                                 child: Row(
                                   children: [
@@ -347,7 +351,7 @@ class _DetectingDiseasesMicrophoneState
                                               ? Icons.stop
                                               : Icons.volume_up,
                                           color: Colors.deepPurple),
-                                      SizedBox(width: 8),
+                                      8.horizontalSpace,
                                       AppTextStyle(
                                         text: isSpeaking
                                             ? 'Stop Speaking'.tr()
@@ -361,6 +365,32 @@ class _DetectingDiseasesMicrophoneState
                                   ),
                                 ),
                               ),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(top: 16),
+                              //   child: InkWell(
+                              //     onTap: () => toggleSpeech(state),
+                              //     child: Row(
+                              //       mainAxisAlignment: MainAxisAlignment.center,
+                              //       children: [
+                              //         Icon(
+                              //             isSpeaking
+                              //                 ? Icons.stop
+                              //                 : Icons.volume_up,
+                              //             color: Colors.deepPurple),
+                              //         SizedBox(width: 8),
+                              //         AppTextStyle(
+                              //           text: isSpeaking
+                              //               ? 'Stop Speaking'.tr()
+                              //               : 'Listen to Diagnosis & Advices'
+                              //                   .tr(),
+                              //           fontSize: 15,
+                              //           fontWeight: FontWeight.w600,
+                              //           color: Colors.deepPurple,
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),

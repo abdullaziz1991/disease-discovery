@@ -21,8 +21,8 @@
   "cough": "سعال",
   "sore_throat": "التهاب الحلق",
   "muscle_pain": "ألم عضلي",
-  "fatigue": "إرهاق",
-  "exhaustion": "تعب شديد",
+  "fatigue": "تعب",
+  "exhaustion": "إرهاق",
   "headache": "صداع",
   "increased_thirst": "عطش متزايد",
   "weight_loss": "فقدان الوزن",
@@ -526,5 +526,10 @@
   "Digestion": "الهضم",
 
   "Cabbage": "الملفوف",
-  "Stomach inflammation": "التهاب المعدة"
+  "Stomach inflammation": "التهاب المعدة",
+  "Speaking...": "يتم التحدث .. ",
+  "Listen to Diagnosis & Advices": "إستمع الى التشخيص والنصائح",
+  "Stop Speaking": "التوقف عن التحدث",
+  "No diagnosis": "لايوجد تشخيص",
+  "Please consult a doctor": "يرجى استشارة الطبيب"
 }

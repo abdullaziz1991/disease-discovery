@@ -1,72 +1,91 @@
-# prediction_logic.py
-# import pandas as pd
-# import joblib
-
-# # Load model and encoders
-# model = joblib.load('disease_mlp_model.pkl')
-# feature_columns = joblib.load('feature_columns.pkl')
-# le_classes = joblib.load('label_encoder_classes.pkl')
-
-# # يتم تحميل النموذج التدريبي  الذي تم تدريبه مسبقًا باستخدام خوارزمية  لتشخيص الأمراض
-# # يتم تحميل أسماء الأعمدة وهي قائمة بالأعراض التي يستخدمها النموذج
-# # يتم تحميل تصنيفات الأمراض لفك تشفير مخرجات النموذج وتحويلها إلى أسماء الأمراض الفعلية
-
-# def predict_disease(symptom_values):
-    
-#     # إنشاء DataFrame جديد يحتوي على جميع الميزات وقيمها الافتراضية (0)
-#     input_df = pd.DataFrame(0, index=[0], columns=feature_columns)
-    
-#     # تحديث القيم المدخلة بالأعراض الفعلية (تحويل القيم المناسبة إلى 1)
-#     for symptom, value in symptom_values.items():
-#         if symptom in input_df.columns:
-#             input_df[symptom] = value
-    
-#     # توقع المرض باستخدام النموذج
-#     prediction = model.predict(input_df)
-    
-#     # تحويل التوقع إلى اسم المرض باستخدام `le_classes`
-#     return le_classes[prediction[0]]
-
-
-import pandas as pd
 import joblib
-from disease_symptoms_map import disease_symptoms
+import numpy as np
+import pandas as pd
+from disease_symptoms_map import disease_symptoms  # {disease_name: [symptom1, symptom2, ...]}
 
-# تحميل النموذج والبيانات
-model = joblib.load('disease_mlp_model.pkl')
-feature_columns = joblib.load('feature_columns.pkl')
-le_classes = joblib.load('label_encoder_classes.pkl')
+# تحميل النموذج والمكوّنات
+mlp_model = joblib.load('mlp_disease_model_6_outputs.pkl')  # النموذج ذو 6 مخارج
+feature_columns = joblib.load('feature_columns.pkl')        # قائمة الأعراض (112)
+label_encoder = joblib.load('label_encoder.pkl')            # لتفسير الناتج الرقمي إلى اسم المرض
 
-def predict_disease(symptom_values):
-        # ✅ طباعة الأعمدة المتوقعة ومدخلات المستخدم
-    # print("Feature columns:", feature_columns)
-    # print("Input symptoms received:", symptom_values.keys())
-    # إنشاء DataFrame بقيم افتراضية
+# فك التشفير من 6 أرقام إلى رقم مرض
+def decode_from_6_outputs(output_vec, base=8):
+    num = 0
+    for digit in output_vec:
+        num = num * base + digit
+    return num
+
+def predict_disease(symptom_values: dict):
+    # ⚠️ إنشاء DataFrame يحتوي على كل الأعراض، بقيم 0 افتراضية
+
     input_df = pd.DataFrame(0, index=[0], columns=feature_columns)
-    
-    # تحديث الأعراض المُدخلة
+
+    symptom_values = {
+    "high_temperature": 1,
+    "cough": 1,
+    "sore_throat": 1,
+    "muscle_pain": 1,
+    "fatigue": 1,
+    # "exhaustion": 1,
+     }
+
+    # ✅ تحديث الأعراض المُدخلة بقيمة صحيحة
     for symptom, value in symptom_values.items():
         if symptom in input_df.columns:
-            input_df[symptom] = value
-    
-    # توقع المرض
-    prediction = model.predict(input_df)
-    predicted_disease = le_classes[prediction[0]]
+            input_df.at[0, symptom] = int(value)  # ✅ الحل لتفادي التحذير
 
-    # حساب نسبة التأكد بناءً على عدد الأعراض
+    # تحويل إلى مصفوفة NumPy (شكل (1, 112))
+    input_array = input_df.values
+
+    print("✅ input_array : ", input_array)
+
+    # التنبؤ
+    pred = mlp_model.predict(input_array)
+
+    # تقريب وتحوّل إلى أعداد صحيحة
+    predicted_output = np.round(pred[0]).astype(int)  # 6 أرقام [0-7] من base=8
+
+    # تحويل 6 أرقام إلى رقم مرض
+    predicted_index = decode_from_6_outputs(predicted_output, base=8)
+
+    # التحقق من صحة الرقم وفك اسم المرض
+    if predicted_index < len(label_encoder.classes_):
+        predicted_disease = label_encoder.classes_[predicted_index]
+    else:
+        predicted_disease = "Unknown"
+
+    # حساب نسبة التأكد بناءً على الأعراض المتوقعة
     expected_symptoms = disease_symptoms.get(predicted_disease, [])
-    matched_symptoms = [s for s in expected_symptoms if str(symptom_values.get(s, 0)) == '1']
+    matched_symptoms = [s for s in expected_symptoms if int(symptom_values.get(s, 0)) == 1]
 
-    
     if expected_symptoms:
         confidence = round(len(matched_symptoms) / len(expected_symptoms) * 100, 2)
     else:
-        confidence = 50.0  # أو أي قيمة افتراضية
-    # ✅ Debug prints
-    
-    print("Predicted:", predicted_disease)
-    print("Expected symptoms:", expected_symptoms)
-    print("Matched symptoms:", matched_symptoms)
-    print("Confidence:", confidence)
+        confidence = 0.0
+
+    # Debug info
+    # Debug info
+    print("✅ Expected disease : ", predicted_disease)
+    # print("📋 الأعراض المتوقعة:", expected_symptoms)
+    # print("✅ الأعراض المطابقة:", matched_symptoms)
+    print("🎯 Confirmation rate", confidence)
 
     return predicted_disease, confidence
+
+
+
+
+
+
+# # ✅ عيّنة من الأعراض لتجربة النموذج (خارج الدالة)
+# sample_symptoms = {
+#     "high_temperature": 1,
+#     "cough": 1,
+#     "sore_throat": 1,
+#     "muscle_pain": 1,
+#     "fatigue": 1,
+#     "exhaustion": 1,
+# }
+
+# # ✅ استدعاء الدالة لعرض التنبؤ
+# predict_disease(sample_symptoms)

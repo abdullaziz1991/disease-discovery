@@ -1,18 +1,19 @@
 class SymptomMapper {
   static final Map<String, RegExp> _symptomPatterns = {
-    'high_temperature': RegExp(r'حرارة عالية|حمى|سخونة'),
+    'high_temperature': RegExp(
+        r'حرارة عالية|حمى|سخونة|حرارة|حراره|الحرارة|high temperature|fever|heat'),
     'cough': RegExp(r'سعال|كحة'),
     'sore_throat': RegExp(r'التهاب حلق|احتقان الحلق|ألم في الحلق'),
     'muscle_pain': RegExp(r'ألم عضلي|وجع عضلات'),
-    'fatigue': RegExp(r'إرهاق|تعب شديد|إعياء|التعب|تعب'),
-    'exhaustion': RegExp(r'إجهاد|إنهاك|تعب مفرط'),
+    'fatigue': RegExp(r'عب شديد|إعياء|التعب|تعب'),
+    'exhaustion': RegExp(r'إجهاد|إنهاك|ارهاق|أرهاق|تعب مفرط'),
     'headache': RegExp(r'صداع|ألم في الرأس'),
     'increased_thirst': RegExp(r'عطش زائد|زيادة العطش|العطش'),
     'weight_loss': RegExp(r'فقدان وزن|نقصان في الوزن|فقدان الوزن'),
     'blurred_vision':
         RegExp(r'رؤية ضبابية|تشوش في الرؤية|تشوش الرؤية|تشوش الرؤيه'),
     'dizziness': RegExp(r'دوخة|دوار'),
-    'nosebleed': RegExp(r'نزيف أنفي|رعاف'),
+    'nosebleed': RegExp(r'نزيف أنفي|رعاف|نزيف انفي'),
     'shortness_of_breath': RegExp(r'ضيق تنفس|صعوبة في التنفس'),
     'difficulty_breathing': RegExp(r'صعوبة التنفس|تنفس مجهد'),
     'wheezing': RegExp(r'صفير عند التنفس|أزيز'),

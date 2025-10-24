@@ -77,29 +77,10 @@ class DiseasesDiscoveryBloc
     });
     //4
     on<SendForDiagnosisEvent>((event, emit) async {
+      // final url = Uri.parse('http://192.168.79.129:5000/predict');
       final url = Uri.parse('http://192.168.1.130:5000/predict');
-      //final url = Uri.parse('http://192.168.215.129:5000/predict');
-
-      //  if (event.method == DiagnosticMethod.fromMic) {
-      //    symptomsData = extractSymptoms(state.recognizedText);
-      // } else {
-      // state.selectedSymptoms = ['skin_rash', 'chills'];
-
       ChangeList changeList = ChangeList(state.selectedSymptoms);
-
       Map<String, String> symptomsData = changeList.getUpdatedList();
-
-      // print(state.selectedSymptoms);
-      // print("state.selectedSymptoms -------------------");
-      print(symptomsData);
-      print("symptomsData -------------------");
-
-      // symptomsData={
-      //   'skin_rash':"1",
-      //   'chills': "1"
-      // }
-      //   }
-
       try {
         final response = await http
             .post(url,
@@ -116,10 +97,14 @@ class DiseasesDiscoveryBloc
               double.tryParse(data["confidence"].toString()) ?? 0.0;
           print(confidence);
           print("confidence ---------------------------------- -----");
-          if (confidence > 67) {
+
+          if (confidence > 59) {
             disease = data["disease"];
             adviceList = List<String>.from(data["advice"]);
-            emit(state.copyWith(diagnosis: disease, advices: adviceList));
+            emit(state.copyWith(
+                diagnosis: disease,
+                advices: adviceList,
+                isDiagnosisButtonPressed: true));
           } else {
             disease = "No diagnosis".tr();
             adviceList = ["Please consult a doctor".tr()];
@@ -132,9 +117,6 @@ class DiseasesDiscoveryBloc
       } on TimeoutException catch (_) {
         print("الطلب استغرق وقتًا طويلاً ولم يتم استلام استجابة.");
         AppSnackBar.show(event.context, "Please re-order".tr());
-
-        // emit(state.copyWith(
-        //     diagnosis: "انتهت مهلة الاستجابة، حاول مرة أخرى.", advices: []));
       }
     });
     //
@@ -181,6 +163,14 @@ class DiseasesDiscoveryBloc
       emit(state.copyWith(selectedSymptoms: [], diagnosis: "", advices: []));
     });
     //
+    on<StopDiagnosisSpokenEvent>((event, emit) async {
+      emit(state.copyWith(isDiagnosisSpoken: false));
+    });
+    //
+    // flutterTts.stop();
+    // print("stop ------------------------");
+    // print(state.isDiagnosisSpoken);
+    // isDiagnosisSpoken
     on<ChangeLanguageEvent>((event, emit) {
       Locale newLocale =
           EasyLocalization.of(event.context)!.locale.languageCode == 'en'
@@ -191,18 +181,16 @@ class DiseasesDiscoveryBloc
       // تحديث EasyLocalization أيضًا
       emit(state.copyWith(locale: newLocale));
     });
-    //
-    // on<SetIsSpeakingEvent>((event, emit) {
-    //   // emit(state.copyWith(isSpeaking: event.isSpeaking));
-    // });
-
-    // on<SetDiagnosisSpokenEvent>((event, emit) {
-    //   emit(state.copyWith(isDiagnosisSpoken: event.isSpoken));
-    // });
+//
     on<ToggleSpeechEvent>((event, emit) async {
+      print(state.isSpeaking);
+      print(state.isDiagnosisSpoken);
+      print("state.isSpeaking --------------------------------");
       if (state.isSpeaking) {
         await flutterTts.stop();
-        emit(state.copyWith(isSpeaking: false));
+        emit(state.copyWith(isSpeaking: false, isDiagnosisSpoken: false));
+
+        print("if (state.isSpeaking) { --------------------------------");
       } else {
         String combinedText = '';
         if (state.diagnosis.isNotEmpty) {
@@ -212,11 +200,13 @@ class DiseasesDiscoveryBloc
           final advText = state.advices.map((a) => a.tr()).join('. ');
           combinedText += '${'Advices'.tr()}: $advText.';
         }
-
         await flutterTts.setLanguage(event.context.locale.languageCode);
         await flutterTts.speak(combinedText);
-
-        emit(state.copyWith(isSpeaking: true));
+        emit(state.copyWith(isSpeaking: true, isDiagnosisSpoken: true));
+        print(state.isSpeaking);
+        print(state.isDiagnosisSpoken);
+        print(
+            "emit(state.copyWith(isSpeaking: true));--------------------------------");
       }
     });
     //
@@ -224,7 +214,5 @@ class DiseasesDiscoveryBloc
       await flutterTts.stop();
       emit(state.copyWith(isSpeaking: false));
     });
-
   }
-
 }
