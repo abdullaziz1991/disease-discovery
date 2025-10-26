@@ -18,55 +18,13 @@ To provide health awareness and an initial automated prediction when a medical c
 
 ## 📸 App Images
 
-<!-- الصف الأول -->
-<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+| Home Screen                    | Symptom Input                  | Voice Input                    | Symptom Selection              |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| ![1](assets/screenshots/1.png) | ![2](assets/screenshots/2.png) | ![3](assets/screenshots/3.png) | ![4](assets/screenshots/4.png) |
 
-  <div style="text-align: center;">
-    <img src="assets/screenshots/1.png" alt="Home Screen" width="200"/>
-    <p>Home Screen</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/2.png" alt="Symptom Input" width="200"/>
-    <p>Symptom Input</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/3.png" alt="Voice Input" width="200"/>
-    <p>Voice Input</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/4.png" alt="Symptom Selection" width="200"/>
-    <p>Symptom Selection</p>
-  </div>
-
-</div>
-
-<!-- الصف الثاني -->
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-
-  <div style="text-align: center;">
-    <img src="assets/screenshots/5.png" alt="Prediction Result" width="200"/>
-    <p>Prediction Result</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/6.png" alt="Recovery Advice" width="200"/>
-    <p>Recovery Advice</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/7.png" alt="Animations" width="200"/>
-    <p>Animations</p>
-  </div>
-  
-  <div style="text-align: center;">
-    <img src="assets/screenshots/8.png" alt="Settings" width="200"/>
-    <p>Settings</p>
-  </div>
-
-</div>
+| Prediction Result              | Recovery Advice                | Animations                     | Settings                       |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| ![5](assets/screenshots/5.png) | ![6](assets/screenshots/6.png) | ![7](assets/screenshots/7.png) | ![8](assets/screenshots/8.png) |
 
 ---
 
