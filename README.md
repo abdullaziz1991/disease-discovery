@@ -12,6 +12,10 @@ To provide health awareness and an initial automated prediction when a medical c
 
 ---
 
+## 📸 App images
+
+![screenshot 1](assets/screenshots/1.png)
+
 ## ✨ Features
 
 - 🎤 Speech-to-Text symptom input
