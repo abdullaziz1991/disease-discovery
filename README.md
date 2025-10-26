@@ -14,15 +14,19 @@ To provide health awareness and an initial automated prediction when a medical c
 
 ## 📸 App images
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
   <img src="assets/screenshots/1.png" alt="Screenshot 1" width="200"/>
   <img src="assets/screenshots/2.png" alt="Screenshot 2" width="200"/>
   <img src="assets/screenshots/3.png" alt="Screenshot 3" width="200"/>
   <img src="assets/screenshots/4.png" alt="Screenshot 4" width="200"/>
-
 </div>
 
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="assets/screenshots/5.png" alt="Screenshot 5" width="200"/>
+  <img src="assets/screenshots/6.png" alt="Screenshot 6" width="200"/>
+  <img src="assets/screenshots/7.png" alt="Screenshot 7" width="200"/>
+  <img src="assets/screenshots/8.png" alt="Screenshot 8" width="200"/>
+</div>
 ## ✨ Features
 
 - 🎤 Speech-to-Text symptom input
