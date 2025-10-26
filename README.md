@@ -18,6 +18,7 @@ To provide health awareness and an initial automated prediction when a medical c
 
 ## 📸 App Images
 
+<!-- الصف الأول -->
 <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
 
   <div style="text-align: center;">
@@ -42,6 +43,7 @@ To provide health awareness and an initial automated prediction when a medical c
 
 </div>
 
+<!-- الصف الثاني -->
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 
   <div style="text-align: center;">
