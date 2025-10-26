@@ -20,11 +20,11 @@ To provide health awareness and an initial automated prediction when a medical c
 
 | ![1](assets/screenshots/1.png) | ![2](assets/screenshots/2.png) | ![3](assets/screenshots/3.png) | ![4](assets/screenshots/4.png) |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| Home Screen                    | Symptom Input                  | Voice Input                    | Symptom Selection              |
+| Home Screen                    | Voice Input                    | Symptom Selection              | Herbs Selection                |
 
 | ![5](assets/screenshots/5.png) | ![6](assets/screenshots/6.png) | ![7](assets/screenshots/7.png) | ![8](assets/screenshots/8.png) |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| Prediction Result              | Recovery Advice                | Animations                     | Settings                       |
+| Prediction Result              | Recovery Advice                | Animations                     | Benefits of the herb           |
 
 ---
 
