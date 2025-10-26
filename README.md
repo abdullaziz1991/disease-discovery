@@ -1,9 +1,9 @@
 # 🩺 Disease Discovery App  
-AI-powered disease prediction from spoken symptoms
+AI-based disease detection using spoken or selected symptoms
 
-A Flutter-based Android application that allows users to input their symptoms via speech.  
-The symptoms are analyzed by a Machine Learning model to predict the most likely disease and provide intelligent voice feedback.
+An Android application built with Flutter that allows users to input their symptoms through voice or by selecting from a list.
 
+Symptoms are analyzed by an MLP-based machine learning model to predict the disease, providing both written and spoken results along with recovery recommendations.
 ---
 
 ## 🎯 Project Goal
