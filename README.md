@@ -18,13 +18,55 @@ To provide health awareness and an initial automated prediction when a medical c
 
 ## 📸 App Images
 
-| Home Screen                    | Symptom Input                  | Voice Input                    | Symptom Selection              |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| ![1](assets/screenshots/1.png) | ![2](assets/screenshots/2.png) | ![3](assets/screenshots/3.png) | ![4](assets/screenshots/4.png) |
+## 📸 App Images
 
-| Prediction Result              | Recovery Advice                | Animations                     | Settings                       |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| ![5](assets/screenshots/5.png) | ![6](assets/screenshots/6.png) | ![7](assets/screenshots/7.png) | ![8](assets/screenshots/8.png) |
+<div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/1.png" alt="Home Screen" width="200"/><br/>
+    Home Screen
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/2.png" alt="Symptom Input" width="200"/><br/>
+    Symptom Input
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/3.png" alt="Voice Input" width="200"/><br/>
+    Voice Input
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/4.png" alt="Symptom Selection" width="200"/><br/>
+    Symptom Selection
+  </div>
+
+</div>
+
+<div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/5.png" alt="Prediction Result" width="200"/><br/>
+    Prediction Result
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/6.png" alt="Recovery Advice" width="200"/><br/>
+    Recovery Advice
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/7.png" alt="Animations" width="200"/><br/>
+    Animations
+  </div>
+
+  <div style="display: inline-block; text-align: center; margin: 5px;">
+    <img src="assets/screenshots/8.png" alt="Settings" width="200"/><br/>
+    Settings
+  </div>
+
+</div>
 
 ---
 
