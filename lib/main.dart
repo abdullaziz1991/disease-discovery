@@ -7,11 +7,7 @@ import 'features/diseases_discovery/presentation/functions/permission.dart';
 // FVM (Flutter Version Manager) – لإدارة إصدارات Flutter بسهولة.
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // هي دالة تُستخدم في تطبيقات Flutter لضمان تهيئة Flutter engine
-  //قبل تشغيل أي عمليات تتطلب التفاعل مع محرك Flutter أو منصة التشغيل
-  //(مثل الوصول إلى الملفات، تشغيل خدمات،  plugins، إلخ).
   await EasyLocalization.ensureInitialized();
-  // تهيئة الترجمة
   EasyLocalization.logger.enableLevels = []; // إلغاء التحذيرات
   requestMicrophonePermission();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -20,12 +16,8 @@ Future<void> main() async {
     path: 'assets/translations',
     fallbackLocale: const Locale('ar'),
     useOnlyLangCode: true,
-    // التطبيق سيستخدم رمز اللغة فقط (language code) دون تضمين رمز الدولة (country code).
-    // اي يكفي Locale('en') ولا حاجة ل Locale('en', 'US')
     saveLocale: true,
-    // يقوم EasyLocalization بحفظ اللغة التي اختارها المستخدم، بحيث يتم استعادتها تلقائيًا عند تشغيل التطبيق مرة أخرى، بدلاً من إعادة تعيينها إلى اللغة الافتراضية
     child: const MyApp(),
-    // الواجهة الاساسية للتطبيق
   ));
 }
 
