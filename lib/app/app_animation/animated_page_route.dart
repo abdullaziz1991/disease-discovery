@@ -26,18 +26,3 @@ class AnimatedPageRoute {
         });
   }
 }
-
-
-
-    // Navigator.of(context).push(
-    //   AnimatedPageRoute.create(page: const SecondPage()));
-
-// void _navigate(BuildContext context) {
-//     Navigator.of(context).push(
-//       AnimatedPageRoute.create(
-//         page: const SecondPage(),
-//         // duration: const Duration(milliseconds: 700),
-//         // transition: TransitionType.fade, // أو TransitionType.slide
-//       )
-//     );
-//   }
