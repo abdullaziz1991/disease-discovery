@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import '../../../app/app_button.dart';
+import '../../../../app/app_button.dart';
 import '../widgets/initial_page/app_bottom_image.dart';
 import '../widgets/initial_page/app_top_image.dart';
 

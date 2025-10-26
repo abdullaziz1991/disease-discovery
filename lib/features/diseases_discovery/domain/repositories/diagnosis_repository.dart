@@ -1,6 +1,6 @@
 
 import 'package:dartz/dartz.dart';
-import '../../../core/failure/failures_extends.dart';
+import '../../../../core/failure/failures_extends.dart';
 import '../../data/models/response_model.dart';
 
 

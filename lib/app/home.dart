@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'appbar/app_appBar.dart';
-import '../features/presentation/pages/detecting_diseases_microphone.dart';
-import '../features/presentation/pages/detecting_diseases_select.dart';
-import '../features/presentation/pages/setecting_herbs.dart';
+import '../features/diseases_discovery/presentation/pages/detecting_diseases_microphone.dart';
+import '../features/diseases_discovery/presentation/pages/detecting_diseases_select.dart';
+import '../features/diseases_discovery/presentation/pages/setecting_herbs.dart';
 
 class Home extends StatefulWidget {
   @override

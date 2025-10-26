@@ -9,8 +9,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:http/http.dart' as http;
 
-import '../../../app/app_snack_bar.dart';
-import '../../../core/strings/constant.dart';
+import '../../../../app/app_snack_bar.dart';
+import '../../../../core/strings/constant.dart';
 import '../functions/change_list.dart';
 import '../functions/convert_text_to_symptoms.dart';
 import '../functions/remove_duplicate_words.dart';

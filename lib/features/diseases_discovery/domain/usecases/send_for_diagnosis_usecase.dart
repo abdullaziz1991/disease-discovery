@@ -1,7 +1,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import '../../../core/failure/failures_extends.dart';
+import '../../../../core/failure/failures_extends.dart';
 import '../../data/models/response_model.dart';
 import '../repositories/diagnosis_repository.dart';
 

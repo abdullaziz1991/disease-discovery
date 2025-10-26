@@ -1,10 +1,10 @@
-import 'package:disease_discovery_project/features/presentation/widgets/app_text_style.dart';
+import 'package:disease_discovery_project/features/diseases_discovery/presentation/widgets/app_text_style.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import '../../../app/app_button.dart';
+import '../../../../app/app_button.dart';
 import '../bloc/diseases_discovery_bloc.dart';
 import '../functions/tts_helper.dart';
 

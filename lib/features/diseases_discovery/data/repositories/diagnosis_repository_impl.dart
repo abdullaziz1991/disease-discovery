@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:disease_discovery_project/features/data/models/response_model.dart';
-import '../../../app/api/api_repository_handlar.dart';
-import '../../../core/failure/failures_extends.dart';
+import 'package:disease_discovery_project/features/diseases_discovery/data/models/response_model.dart';
+import '../../../../app/api/api_repository_handlar.dart';
+import '../../../../core/failure/failures_extends.dart';
 import '../../domain/repositories/diagnosis_repository.dart';
 import '../datasoueces/diagnosis_remote_data_source.dart';
 

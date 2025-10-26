@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../features/presentation/bloc/diseases_discovery_bloc.dart';
-import '../../features/presentation/widgets/app_text_style.dart';
+import '../../features/diseases_discovery/presentation/bloc/diseases_discovery_bloc.dart';
+import '../../features/diseases_discovery/presentation/widgets/app_text_style.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   // implements PreferredSizeWidget تجبر AppAppBar على تنفيذ preferredSize لتحديد حجم الشريط.

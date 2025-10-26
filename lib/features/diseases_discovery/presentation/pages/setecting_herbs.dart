@@ -1,6 +1,6 @@
-import 'package:disease_discovery_project/features/presentation/widgets/app_text_style.dart';
+import 'package:disease_discovery_project/features/diseases_discovery/presentation/widgets/app_text_style.dart';
 import 'package:flutter/material.dart';
-import '../../../core/strings/constant.dart';
+import '../../../../core/strings/constant.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class SelectingHerbsPage extends StatefulWidget {

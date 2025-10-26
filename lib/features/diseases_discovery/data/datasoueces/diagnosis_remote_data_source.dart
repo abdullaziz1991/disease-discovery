@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../app/api/api_response_handler.dart';
-import '../../../../app/api/api_routes.dart';
+import '../../../../../app/api/api_response_handler.dart';
+import '../../../../../app/api/api_routes.dart';
 import '../models/response_model.dart';
 
 @injectable
