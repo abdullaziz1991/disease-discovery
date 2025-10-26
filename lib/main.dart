@@ -1,8 +1,8 @@
-import 'package:disease_discovery_project/app.dart';
+import 'package:disease_discovery_project/app/app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'presentation/functions/permission.dart';
+import 'features/presentation/functions/permission.dart';
 
 // FVM (Flutter Version Manager) – لإدارة إصدارات Flutter بسهولة.
 Future<void> main() async {

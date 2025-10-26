@@ -26,6 +26,18 @@ dependencies:
   # tflite_flutter_helper: ^0.3.1
   # tflite_flutter_plus: ^0.0.1
   # path_provider: ^2.1.5
+  dartz: ^0.10.1
+  # # Service locator
+  get_it: ^7.6.0
+  injectable: ^2.4.1
+  internet_connection_checker: ^1.0.0+1
+  freezed_annotation: ^2.4.1
+  dio: ^5.3.4
+  smooth_page_indicator: ^1.0.0+2
+  intl_phone_number_input: ^0.7.4
+  fluttertoast: ^8.2.4
+  flutter_rating_bar: ^4.0.1
+  
 
   cupertino_icons: ^1.0.8
   # استخدام أيقونات iOS-style مثل أيقونات النظام في أجهزة Apple.
