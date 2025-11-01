@@ -47,11 +47,7 @@ import 'package:flutter/material.dart';
 
 Future<void> speakAdvices(List<String> advices, {BuildContext? context}) async {
   final FlutterTts flutterTts = FlutterTts();
-
-  // تحديد اللغة الحالية من EasyLocalization
   final currentLocale = context?.locale.languageCode ?? 'en';
-
-  // تعيين اللغة بناءً على اللغة الحالية
   if (currentLocale == 'ar') {
     await flutterTts.setLanguage("ar-SA");
   } else {

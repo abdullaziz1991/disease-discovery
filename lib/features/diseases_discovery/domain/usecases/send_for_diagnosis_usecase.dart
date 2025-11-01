@@ -13,6 +13,3 @@ class SendForDiagnosisUsecase {
     return await repository.sendForDiagnosis(data);
   }
 }
-
-// call = callable class => we can do -- AddPostUsecase(post)
-// the class become function 

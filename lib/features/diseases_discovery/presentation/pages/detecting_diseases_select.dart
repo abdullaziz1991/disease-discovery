@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import '../../../../app/app_button.dart';
 import '../bloc/diseases_discovery_bloc.dart';
-import '../functions/tts_helper.dart';
 
 class DetectingDiseasesSelect extends StatefulWidget {
   @override
@@ -41,75 +40,25 @@ class _DetectingDiseasesSelectState extends State<DetectingDiseasesSelect> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiseasesDiscoveryBloc, DiseasesDiscoveryState>(
-      builder: (context, state) {
-        return SingleChildScrollView(
+        builder: (context, state) {
+      return SingleChildScrollView(
           child: Column(
-            children: [
-              20.verticalSpace,
-
-              // // بحث الأعراض
-              // Padding(
-              //   padding: EdgeInsets.all(8.sp),
-              //   child: TextFormField(
-              //     decoration: InputDecoration(
-              //       labelText: 'Look for symptoms'.tr(),
-              //       border: const OutlineInputBorder(),
-              //     ),
-              //     onChanged: (q) => context
-              //         .read<DiseasesDiscoveryBloc>()
-              //         .add(SearchSymptoms(q)),
-              //   ),
-              // ),
-
-              // // قائمة الأعراض
-              // Expanded(
-              //   child: ListView.builder(
-              //     itemCount: state.filteredSymptoms.length,
-              //     itemBuilder: (ctx, i) {
-              //       final s = state.filteredSymptoms[i];
-              //       final sel = state.selectedSymptoms.contains(s);
-              //       return ListTile(
-              //           title: AppTextStyle(text: s.tr()),
-              //           trailing: sel
-              //               ? const Icon(Icons.check, color: Colors.green)
-              //               : null,
-              //           onTap: () {
-              //             // here
-              //             context
-              //                 .read<DiseasesDiscoveryBloc>()
-              //                 .add(ToggleSymptomSelection(s));
-
-              //           });
-              //     },
-              //   ),
-              // ),
-
-              Container(
-                height: 100.h,
-                padding: EdgeInsets.all(8.sp),
-                child: TextFormField(
+        children: [
+          20.verticalSpace,
+          Container(
+              height: 100.h,
+              padding: EdgeInsets.all(8.sp),
+              child: TextFormField(
                   controller: _searchController,
                   decoration: InputDecoration(
-                    labelText: 'Look for symptoms'.tr(),
-                    border: const OutlineInputBorder(),
-                    // suffixIcon: IconButton(
-                    //     icon: const Icon(Icons.clear),
-                    //     onPressed: () {
-                    //       _searchController.text = "";
-                    //       context
-                    //           .read<DiseasesDiscoveryBloc>()
-                    //           .add(ToggleSymptomSelection(s));
-                    //     })
-                  ),
+                      labelText: 'Look for symptoms'.tr(),
+                      border: const OutlineInputBorder()),
                   onChanged: (q) => context
                       .read<DiseasesDiscoveryBloc>()
-                      .add(SearchSymptoms(q)),
-                ),
-              ),
-              // if(!state.isDiagnosisButtonPressed)
-              SizedBox(
-                height: 500,
-                child: ListView.builder(
+                      .add(SearchSymptoms(q)))),
+          SizedBox(
+              height: 500,
+              child: ListView.builder(
                   itemCount: state.filteredSymptoms.length,
                   itemBuilder: (ctx, i) {
                     final s = state.filteredSymptoms[i];
@@ -125,166 +74,134 @@ class _DetectingDiseasesSelectState extends State<DetectingDiseasesSelect> {
                               .read<DiseasesDiscoveryBloc>()
                               .add(ToggleSymptomSelection(s));
                         });
-                  },
-                ),
-              ),
-              //  if(state.isDiagnosisButtonPressed)
-              //  ListView.builder(
-              //                   shrinkWrap: true,
-              //                   physics: const NeverScrollableScrollPhysics(),
-              //                   itemCount: state.selectedSymptoms.length,
-              //                   itemBuilder: (context, index) {
-              //                     String symptom = state.selectedSymptoms[index];
-              //                     return ListTile(
-              //                         title: AppTextStyle(text: symptom.tr()),
-              //                         trailing:
-              //                             const Icon(Icons.check, color: Colors.green),
-              //                         onTap: () {
-              //                           // context
-              //                           //     .read<DiseasesDiscoveryBloc>()
-              //                           //     .add(ToggleSymptomSelection(symptom));
-              //                         });
-              //                   }),
-              // أزرار التشخيص والإعادة
-              Padding(
-                padding: EdgeInsetsDirectional.only(top: 10.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () => context.read<DiseasesDiscoveryBloc>().add(
-                            SendForDiagnosisEvent(
-                              context: context,
-                            ),
+                  })),
+
+          Padding(
+              padding: EdgeInsetsDirectional.only(top: 10.h),
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                InkWell(
+                    onTap: () => context.read<DiseasesDiscoveryBloc>().add(
+                          SendForDiagnosisEvent(
+                            context: context,
                           ),
-                      child: AppButton(
+                        ),
+                    child: AppButton(
                         title: 'Diagnose Disease'.tr(),
                         width: 160.w,
                         marginTop: 0,
-                        marginButton: state.diagnosis.isNotEmpty ? 0 : 20,
-                      ),
-                    ),
-                    5.horizontalSpace,
-                    InkWell(
-                      onTap: () => context
-                          .read<DiseasesDiscoveryBloc>()
-                          .add(ResetValuesEvent()),
-                      child: const Icon(Icons.sync, color: Color(0xFF8E0606)),
-                    ),
-                  ],
-                ),
-              ),
+                        marginButton: state.diagnosis.isNotEmpty ? 0 : 20)),
+                5.horizontalSpace,
+                InkWell(
+                    onTap: () => context
+                        .read<DiseasesDiscoveryBloc>()
+                        .add(ResetValuesEvent()),
+                    child: const Icon(Icons.sync, color: Color(0xFF8E0606)))
+              ])),
 
-              // بطاقة التشخيص والنصائح
-              if (state.diagnosis.isNotEmpty || state.advices.isNotEmpty) ...[
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Card(
+          // بطاقة التشخيص والنصائح
+          if (state.diagnosis.isNotEmpty || state.advices.isNotEmpty) ...[
+            Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Card(
                     elevation: 4,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.sp)),
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // سطر التشخيص
-                          InkWell(
-                            onTap: () async {
-                              final t = FlutterTts();
-                              await t.setLanguage(context.locale.languageCode);
-                              await t.speak(
-                                  '${"Diagnosis: ".tr()} ${state.diagnosis.tr()}');
-                            },
-                            child: Row(
-                              children: [
-                                const Icon(Icons.local_hospital,
-                                    color: Colors.redAccent, size: 18),
-                                8.horizontalSpace,
-                                AppTextStyle(
-                                    text: "Diagnosis: ".tr(),
-                                    fontSize: 16,
-                                    color: Colors.redAccent),
-                                AppTextStyle(
-                                    text: state.diagnosis.tr(),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
-                              ],
-                            ),
-                          ),
-                          const Divider(),
-
-                          // قسم النصائح
-                          InkWell(
-                            onTap: () async {
-                              final t = FlutterTts();
-                              await t.setLanguage(context.locale.languageCode);
-                              final advText =
-                                  state.advices.map((a) => a.tr()).join('. ');
-                              await t.speak('${'Advices'.tr()}: $advText');
-                            },
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    const Icon(Icons.tips_and_updates,
-                                        color: Colors.blueAccent, size: 18),
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // سطر التشخيص
+                              InkWell(
+                                  onTap: () async {
+                                    final t = FlutterTts();
+                                    await t.setLanguage(
+                                        context.locale.languageCode);
+                                    await t.speak(
+                                        '${"Diagnosis: ".tr()} ${state.diagnosis.tr()}');
+                                  },
+                                  child: Row(children: [
+                                    const Icon(Icons.local_hospital,
+                                        color: Colors.redAccent, size: 18),
                                     8.horizontalSpace,
                                     AppTextStyle(
-                                        text: 'Advices'.tr() + ':',
+                                        text: "Diagnosis: ".tr(),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.blueAccent),
-                                  ],
-                                ),
-                                8.verticalSpace,
-                                ...state.advices.map((a) => ListTile(
-                                      contentPadding: EdgeInsets.zero,
-                                      dense: true,
-                                      leading: const Icon(Icons.check_circle,
-                                          color: Colors.green),
-                                      title: AppTextStyle(
-                                          text: a.tr(), fontSize: 13),
-                                    )),
-                              ],
-                            ),
-                          ),
+                                        color: Colors.redAccent),
+                                    AppTextStyle(
+                                        text: state.diagnosis.tr(),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500)
+                                  ])),
+                              const Divider(),
 
-                          // زر تشغيل/إيقاف النطق
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16),
-                            child: InkWell(
-                              onTap: () => toggleSpeech(state),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                      isSpeaking ? Icons.stop : Icons.volume_up,
-                                      color: Colors.deepPurple),
-                                  8.horizontalSpace,
-                                  AppTextStyle(
-                                    text: isSpeaking
-                                        ? 'Stop Speaking'.tr()
-                                        : 'Listen to Diagnosis & Advices'.tr(),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.deepPurple,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ],
-          ),
-        );
-      },
-    );
+                              // قسم النصائح
+                              InkWell(
+                                  onTap: () async {
+                                    final t = FlutterTts();
+                                    await t.setLanguage(
+                                        context.locale.languageCode);
+                                    final advText = state.advices
+                                        .map((a) => a.tr())
+                                        .join('. ');
+                                    await t
+                                        .speak('${'Advices'.tr()}: $advText');
+                                  },
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(children: [
+                                          const Icon(Icons.tips_and_updates,
+                                              color: Colors.blueAccent,
+                                              size: 18),
+                                          8.horizontalSpace,
+                                          AppTextStyle(
+                                              text: 'Advices'.tr() + ':',
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.blueAccent)
+                                        ]),
+                                        8.verticalSpace,
+                                        ...state.advices.map((a) => ListTile(
+                                            contentPadding: EdgeInsets.zero,
+                                            dense: true,
+                                            leading: const Icon(
+                                                Icons.check_circle,
+                                                color: Colors.green),
+                                            title: AppTextStyle(
+                                                text: a.tr(), fontSize: 13)))
+                                      ])),
+
+                              // زر تشغيل/إيقاف النطق
+                              Padding(
+                                  padding: const EdgeInsets.only(top: 16),
+                                  child: InkWell(
+                                      onTap: () => toggleSpeech(state),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                                isSpeaking
+                                                    ? Icons.stop
+                                                    : Icons.volume_up,
+                                                color: Colors.deepPurple),
+                                            8.horizontalSpace,
+                                            AppTextStyle(
+                                                text: isSpeaking
+                                                    ? 'Stop Speaking'.tr()
+                                                    : 'Listen to Diagnosis & Advices'
+                                                        .tr(),
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.deepPurple)
+                                          ])))
+                            ]))))
+          ]
+        ],
+      ));
+    });
   }
 }

@@ -33,10 +33,8 @@ class AppTextStyle extends StatelessWidget {
             fontSize: fontSize,
             fontWeight: fontWeight,
             color: color ?? Colors.black),
-        maxLines: maxLines ?? 1000, // تحديد الحد الأقصى لعدد السطور
+        maxLines: maxLines ?? 1000, 
         overflow: TextOverflow.ellipsis,
-        // softWrap: true,
-        // السماح بالنقل إلى سطر جديد إذا كانت المساحة غير كافية
         textAlign: textAlign);
   }
 }

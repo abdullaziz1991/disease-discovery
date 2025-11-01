@@ -8,7 +8,7 @@ import 'features/diseases_discovery/presentation/functions/permission.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  EasyLocalization.logger.enableLevels = []; // إلغاء التحذيرات
+  EasyLocalization.logger.enableLevels = [];
   requestMicrophonePermission();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(EasyLocalization(
@@ -20,6 +20,3 @@ Future<void> main() async {
     child: const MyApp(),
   ));
 }
-
-// cd prodiction 
-// python app.py

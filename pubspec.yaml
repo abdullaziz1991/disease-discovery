@@ -37,7 +37,8 @@ dependencies:
   intl_phone_number_input: ^0.7.4
   fluttertoast: ^8.2.4
   flutter_rating_bar: ^4.0.1
-  
+  json_serializable: ^6.8.0
+  build_runner: ^2.0.0
 
   cupertino_icons: ^1.0.8
   # استخدام أيقونات iOS-style مثل أيقونات النظام في أجهزة Apple.
