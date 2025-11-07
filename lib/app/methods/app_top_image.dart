@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../api/local_images_path.dart';
+import '../../core/network/local_images_path.dart';
 
 // class AppTopImage extends StatelessWidget {
 //   final double? opacity;

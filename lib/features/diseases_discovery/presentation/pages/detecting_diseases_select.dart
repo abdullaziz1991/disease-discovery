@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import '../../../../app/app_button.dart';
+import '../../../../app/methods/app_button.dart';
 import '../bloc/diseases_discovery_bloc.dart';
 
 class DetectingDiseasesSelect extends StatefulWidget {

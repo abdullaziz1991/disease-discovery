@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../app_popup/app_snack_bar.dart';
-import '../../core/failure/failure_message.dart';
-import '../../core/failure/failures_extends.dart';
+import '../../app/app_popup/app_snack_bar.dart';
+import '../failure/failure_message.dart';
+import '../failure/failures_extends.dart';
 
-class ApiFailureHandler {
+class ApiFailureSilentHandler {
   static void handleFailure({
     required Failure failure,
     required BuildContext context,
@@ -16,16 +16,14 @@ class ApiFailureHandler {
       // showForceUpdateDialog(context, failure.updateUrl);
     } else if (failure is ExpiredTokenFailure) {
       // GetIt.I<ProfileBloc>().add(SignOutProfileEvent(context: context));
-    } else {
+    } else if (failure is OfflineFailure || failure is TimeoutFailure) {
       AppSnackBar.show(context, failureMessage(failure));
+      Future.delayed(const Duration(seconds: 1), retryAction);
+    } else {
       Future.delayed(const Duration(seconds: 1), retryAction);
     }
   }
 }
-// else if (failure is OfflineFailure || failure is TimeoutFailure) {
-//       AppSnackBar.show(context, failureMessage(failure));
-//       Future.delayed(const Duration(seconds: 1), retryAction);
-    // } 
 
         // ApiFailureHandler.handleFailure(
         //     context: event.context,

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import '../../core/exceptions/exceptions.dart';
+import '../exceptions/exceptions.dart';
 
 class ApiResponseHandler {
   static Future<dynamic> handleRequest<T>(

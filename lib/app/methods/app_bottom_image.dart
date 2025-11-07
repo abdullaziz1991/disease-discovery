@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import '../api/local_images_path.dart';
+import '../../core/network/local_images_path.dart';
 
 class AppBottomImage extends StatelessWidget {
   final double? opacity;

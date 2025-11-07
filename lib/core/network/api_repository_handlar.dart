@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
-import '../../core/exceptions/exceptions.dart';
-import '../../core/failure/failures_extends.dart';
-import '../../core/network/network_info.dart';
+import '../exceptions/exceptions.dart';
+import '../failure/failures_extends.dart';
+import 'network_info.dart';
 
 class ApiRepositoryHandler {
   static Future<Either<Failure, T>> execute<T>(
